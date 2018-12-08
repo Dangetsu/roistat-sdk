@@ -29,7 +29,8 @@ class Api {
      * @param string $apiMethod
      * @param object|array $post
      * @param string $method
-     * @return string
+     * @return array
+     * @throws Exception\AuthException
      */
     public function send($apiMethod, $post = [], $method = 'GET') {
         $client = new GuzzleHttp\Client([
@@ -44,7 +45,13 @@ class Api {
         } else {
             $response = $client->get($url);
         }
-        return $response->getBody()->getContents();
+
+        $data = GuzzleHttp\json_decode($response->getBody()->getContents(),1 );
+        if (array_key_exists('error', $data)) {
+            throw new Exception\AuthException($data['error']);
+        }
+
+        return $data;
     }
 
     private function _buildUrl($apiMethod) {
