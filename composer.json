@@ -1,0 +1,11 @@
+{
+    "require": {
+        "php": ">=5.4.0",
+        "guzzlehttp/guzzle": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Analytics\\": "src/"
+        }
+    }
+}
