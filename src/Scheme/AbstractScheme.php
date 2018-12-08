@@ -5,9 +5,21 @@
 
 namespace Analytics\Scheme;
 
+use \Analytics\Engine;
+
 abstract class AbstractScheme {
     /** @var string */
     protected $_entityName;
+    /** @var Engine\Api */
+    protected $_api;
+
+    /**
+     * AbstractScheme constructor.
+     * @param Engine\Api $api
+     */
+    public function __construct(Engine\Api $api) {
+        $this->_api = $api;
+    }
 
     /**
      * @param array $items

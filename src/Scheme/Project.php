@@ -5,7 +5,7 @@
 
 namespace Analytics\Scheme;
 
-use Analytics;
+use Analytics\Engine\Exception;
 use Analytics\Entity;
 
 class Project extends AbstractScheme {
@@ -14,19 +14,19 @@ class Project extends AbstractScheme {
 
     /**
      * @return Entity\Project[]
-     * @throws \Exception
+     * @throws Exception\AuthException
      */
     public function getProjects() {
-        $response = Analytics\Roistat::$api->send('user/projects');
+        $response = $this->_api->send('user/projects');
         return $this->_buildEntity($response['projects']);
     }
 
     /**
      * @param Entity\Project $project
      * @return array
-     * @throws \Exception
+     * @throws Exception\AuthException
      */
     public function createProject(Entity\Project $project) {
-        return Analytics\Roistat::$api->send('account/project/create', $project, 'POST');
+        return $this->_api->send('account/project/create', $project, 'POST');
     }
 }
