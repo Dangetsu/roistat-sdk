@@ -9,24 +9,27 @@ use Analytics\Engine\Exception;
 use Analytics\Entity;
 
 class Project extends AbstractScheme {
-
+    /** @var string */
     protected $_entityName = 'Project';
 
     /**
      * @return Entity\Project[]
      * @throws Exception\AuthException
      */
-    public function getProjects() {
+    public function items() {
         $response = $this->_api->send('user/projects');
         return $this->_buildEntity($response['projects']);
     }
 
     /**
      * @param Entity\Project $project
-     * @return array
+     * @return Entity\Project
      * @throws Exception\AuthException
      */
-    public function createProject(Entity\Project $project) {
-        return $this->_api->send('account/project/create', $project, 'POST');
+    public function create(Entity\Project $project) {
+        $response = $this->_api->send('account/project/create', $project, 'POST');
+        $project->id = $response['data']['project_id'];
+        $project->counter = new Entity\Counter($response['data']['counter']);
+        return $project;
     }
 }

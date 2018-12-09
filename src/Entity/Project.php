@@ -16,4 +16,6 @@ class Project extends AbstractEntity {
     public $currency;
     /** @var int */
     public $is_owner;
+    /** @var Counter */
+    public $counter;
 }
