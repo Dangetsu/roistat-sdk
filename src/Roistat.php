@@ -7,6 +7,7 @@ namespace Analytics;
 
 /**
  * @method Scheme\Project Project()
+ * @method Scheme\Counter Counter()
  */
 class Roistat {
     /** @var Engine\Api */
@@ -14,11 +15,11 @@ class Roistat {
 
     /**
      * Roistat constructor.
-     * @param $project_id
-     * @param $api_key
+     * @param string $api_key
+     * @param int $project_id
      */
-    public function __construct($project_id, $api_key) {
-        $this->_api = new Engine\Api($project_id, $api_key);
+    public function __construct($api_key, $project_id = null) {
+        $this->_api = new Engine\Api($api_key, $project_id);
     }
 
     /**

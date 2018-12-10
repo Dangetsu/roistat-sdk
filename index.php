@@ -5,12 +5,14 @@
 
 require_once 'vendor/autoload.php';
 
-$app = new \Analytics\Roistat(1111, 'f9b21f2e3ecf72b34753caa7a6509e19');
+$app = new \Analytics\Roistat('f9b21f2e3ecf72b34753caa7a6509e19', 1111);
 
-print_r(
-    $app->Project()->create(
-        (new \Analytics\Entity\Project())
-        ->setName('Test API SDK')
-        ->setCurrency('USD')
-    )
-);
+try {
+    print_r(
+        $app->Counter()->get()
+    );
+} catch (\Analytics\Engine\Exception\AuthException $e) {
+    die($e->getMessage());
+} catch (\Analytics\Engine\Exception\BasicException $e) {
+    die($e->getMessage());
+}

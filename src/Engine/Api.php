@@ -18,10 +18,10 @@ class Api {
 
     /**
      * Api constructor.
-     * @param $project_id
-     * @param $api_key
+     * @param string $api_key
+     * @param int $project_id
      */
-    public function __construct($project_id, $api_key) {
+    public function __construct($api_key, $project_id) {
         $this->_project_id = $project_id;
         $this->_api_key = $api_key;
     }
@@ -60,6 +60,6 @@ class Api {
     }
 
     private function _buildUrl($apiMethod) {
-        return self::API_URL . "{$apiMethod}?project_id={$this->_project_id}&key={$this->_api_key}";
+        return self::API_URL . "{$apiMethod}?project={$this->_project_id}&key={$this->_api_key}";
     }
 }
