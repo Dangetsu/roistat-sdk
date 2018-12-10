@@ -5,17 +5,31 @@
 
 namespace Analytics\Entity;
 
+/**
+ * @method string getName()
+ * @method string getProfit()
+ * @method string getCreationDate()
+ * @method string getCurrency()
+ * @method int getIsOwner()
+ * @method Counter getCounter()
+ * @method self setName(string $value)
+ * @method self setProfit(string $value)
+ * @method self setCreationDate(string $value)
+ * @method self setCurrency(string $value)
+ * @method self setIsOwner(int $value)
+ * @method self setCounter(Counter $counter)
+ */
 class Project extends AbstractEntity {
     /** @var string */
-    public $name;
+    protected $name;
     /** @var string */
-    public $profit;
+    protected $profit;
     /** @var string */
-    public $creation_date;
+    protected $creation_date;
     /** @var string */
-    public $currency;
+    protected $currency;
     /** @var int */
-    public $is_owner;
+    protected $is_owner;
     /** @var Counter */
-    public $counter;
+    protected $counter;
 }

@@ -5,6 +5,7 @@
 
 namespace Analytics\Engine;
 
+use Analytics\Entity\AbstractEntity;
 use GuzzleHttp;
 
 class Api {
@@ -31,6 +32,7 @@ class Api {
      * @param string $method
      * @return array
      * @throws Exception\AuthException
+     * @throws Exception\BasicException
      */
     public function send($apiMethod, $post = [], $method = 'GET') {
         $client = new GuzzleHttp\Client([
@@ -48,7 +50,10 @@ class Api {
 
         $data = GuzzleHttp\json_decode($response->getBody()->getContents(),1 );
         if (array_key_exists('error', $data)) {
-            throw new Exception\AuthException($data['error']);
+            if ($data['error'] === 'authentication_failed') {
+                throw new Exception\AuthException($data['error']);
+            }
+            throw new Exception\BasicException($data['error']);
         }
 
         return $data;

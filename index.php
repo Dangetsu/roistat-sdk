@@ -7,7 +7,10 @@ require_once 'vendor/autoload.php';
 
 $app = new \Analytics\Roistat(1111, 'f9b21f2e3ecf72b34753caa7a6509e19');
 
-$project = new \Analytics\Entity\Project();
-$project->name = 'Test API SDK';
-$project->currency = 'USD';
-print_r($app->Project()->create($project));
+print_r(
+    $app->Project()->create(
+        (new \Analytics\Entity\Project())
+        ->setName('Test API SDK')
+        ->setCurrency('USD')
+    )
+);
