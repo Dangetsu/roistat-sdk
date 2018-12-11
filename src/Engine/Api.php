@@ -5,12 +5,13 @@
 
 namespace Analytics\Engine;
 
-use Analytics\Entity\AbstractEntity;
 use GuzzleHttp;
 
 class Api {
     const API_URL = 'https://cloud.roistat.com/api/v1/';
 
+    /** @var GuzzleHttp\HandlerStack */
+    private $_mockHandler;
     /** @var int */
     private $_project_id;
     /** @var string */
@@ -20,10 +21,12 @@ class Api {
      * Api constructor.
      * @param string $api_key
      * @param int $project_id
+     * @param GuzzleHttp\HandlerStack $handler
      */
-    public function __construct($api_key, $project_id) {
+    public function __construct($api_key, $project_id, GuzzleHttp\HandlerStack $handler) {
         $this->_project_id = $project_id;
         $this->_api_key = $api_key;
+        $this->_mockHandler = $handler;
     }
 
     /**
@@ -36,7 +39,8 @@ class Api {
      */
     public function send($apiMethod, $post = [], $method = 'GET') {
         $client = new GuzzleHttp\Client([
-            'headers' => [ 'Content-Type' => 'application/json' ]
+            'headers' => [ 'Content-Type' => 'application/json' ],
+            'handler' => $this->_mockHandler,
         ]);
 
         $url = $this->_buildUrl($apiMethod);

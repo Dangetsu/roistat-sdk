@@ -5,7 +5,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Analytics\\": "src/"
+            "Analytics\\": "src/",
+            "Test\\": "test/"
         }
     }
 }

@@ -19,6 +19,7 @@ class Counter extends AbstractScheme {
      */
     public function get() {
         $response = $this->_api->send('project/settings/counter/list');
-        return $this->_buildEntity($response['data']);
+        $objects = $this->_buildEntity($response['data']);
+        return count($objects) > 0 ? $objects[0] : null;
     }
 }
