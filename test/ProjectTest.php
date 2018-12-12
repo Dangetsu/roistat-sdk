@@ -5,37 +5,44 @@
 
 namespace Test;
 
-require_once '../vendor/autoload.php';
-
 use Analytics\Engine\Exception;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7;
-use GuzzleHttp\Handler;
+use Analytics\Entity;
 
 class ProjectTest extends AbstractTest {
     /**
      * @throws Exception\AuthException
      * @throws Exception\BasicException
      */
-    public function testGet() {
-        $handler = $this->_createMockResponse(['data' => [['id' => '213214', 'code' => 'fuck you']]]);
+    public function testItems() {
+        $handler = $this->_createMockResponse(['projects' => [
+            ['id' => 58211, 'name' => 'API', 'profit' => '0', 'creation_date' => '2017-09-29 08:41:27', 'currency' => 'RUB', 'is_owner' => 1],
+            ['id' => 58211, 'name' => 'API', 'profit' => '0', 'creation_date' => '2017-09-29 08:41:27', 'currency' => 'RUB', 'is_owner' => 1],
+        ], "status" => "success"]);
         $this->_roistat->addMockHandler($handler);
-        $counter = $this->_roistat->Counter()->get();
-        $this->assertNotNull($counter);
+        $projects = $this->_roistat->Project()->items();
+        $this->assertSame(2, count($projects));
+
+        $project = $projects[0];
+        $this->assertSame(58211, $project->getId());
+        $this->assertSame('API', $project->getName());
+        $this->assertSame('0', $project->getProfit());
+        $this->assertSame('2017-09-29 08:41:27', $project->getCreationDate());
+        $this->assertSame('RUB', $project->getCurrency());
+        $this->assertSame(1, $project->getIsOwner());
     }
 
     /**
-     * @param array $responseData
-     * @param int $statusCode
-     * @return HandlerStack
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
      */
-    private function _createMockResponse(array $responseData, $statusCode = 200) {
-        $headers = ['Content-Type' => 'application/json'];
-        $body = json_encode($responseData);
-        $response = new Psr7\Response($statusCode, $headers, $body);
-        $mock = new Handler\MockHandler([
-            $response
-        ]);
-        return HandlerStack::create($mock);
+    public function testCreate() {
+        $handler = $this->_createMockResponse(['data' => ['project_id' => 99999, 'counter' => ['id' => '213214', 'code' => '<script>counter</script>']], 'status' => 'success']);
+        $this->_roistat->addMockHandler($handler);
+        $project = $this->_roistat->Project()->create((new Entity\Project())->setName('TestName')->setCurrency('USD'));
+        $this->assertSame(99999, $project->getId());
+        $this->assertSame('TestName', $project->getName());
+        $this->assertSame('USD', $project->getCurrency());
+        $this->assertSame('213214', $project->getCounter()->getId());
+        $this->assertSame('<script>counter</script>', $project->getCounter()->getCode());
     }
 }
