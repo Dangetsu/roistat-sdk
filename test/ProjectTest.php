@@ -17,7 +17,7 @@ class ProjectTest extends AbstractTest {
         $handler = $this->_createMockResponse(['projects' => [
             ['id' => 58211, 'name' => 'API', 'profit' => '0', 'creation_date' => '2017-09-29 08:41:27', 'currency' => 'RUB', 'is_owner' => 1],
             ['id' => 58211, 'name' => 'API', 'profit' => '0', 'creation_date' => '2017-09-29 08:41:27', 'currency' => 'RUB', 'is_owner' => 1],
-        ], "status" => "success"]);
+        ], 'status' => 'success']);
         $this->_roistat->addMockHandler($handler);
         $projects = $this->_roistat->Project()->items();
         $this->assertSame(2, count($projects));

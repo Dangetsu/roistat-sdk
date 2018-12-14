@@ -21,9 +21,9 @@ class Api {
      * Api constructor.
      * @param string $api_key
      * @param int $project_id
-     * @param GuzzleHttp\HandlerStack $handler
+     * @param GuzzleHttp\HandlerStack|null $handler
      */
-    public function __construct($api_key, $project_id, GuzzleHttp\HandlerStack $handler) {
+    public function __construct($api_key, $project_id, $handler) {
         $this->_project_id = $project_id;
         $this->_api_key = $api_key;
         $this->_mockHandler = $handler;
@@ -63,6 +63,10 @@ class Api {
         return $data;
     }
 
+    /**
+     * @param string $apiMethod
+     * @return string
+     */
     private function _buildUrl($apiMethod) {
         return self::API_URL . "{$apiMethod}?project={$this->_project_id}&key={$this->_api_key}";
     }

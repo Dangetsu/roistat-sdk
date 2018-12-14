@@ -10,6 +10,7 @@ use GuzzleHttp;
 /**
  * @method Scheme\Project Project()
  * @method Scheme\Counter Counter()
+ * @method Scheme\SiteVisit SiteVisit()
  */
 class Roistat {
     /** @var Engine\Api */

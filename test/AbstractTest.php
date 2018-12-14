@@ -35,4 +35,12 @@ class AbstractTest extends \PHPUnit_Framework_TestCase {
         ]);
         return HandlerStack::create($mock);
     }
+
+    /**
+     * @param string $file
+     * @return array
+     */
+    protected function _getSavedResponse($file) {
+        return json_decode(file_get_contents(__DIR__ . "/Response/{$file}.json"), 1);
+    }
 }

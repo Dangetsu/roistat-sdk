@@ -1,0 +1,49 @@
+{
+  "data": [
+    {
+      "id": "1001",
+      "first_visit_id": "1000",
+      "date": "2018-01-26T11:23:15+0000",
+      "landing_page": "open-cart21",
+      "host": "open-cart21",
+      "google_client_id": "google_client_id",
+      "metrika_client_id": "metrika_client_id",
+      "ip": "217.175.0.85",
+      "roistat_param1": "roistat_param1",
+      "roistat_param2": "roistat_param2",
+      "roistat_param3": "roistat_param3",
+      "roistat_param4": "roistat_param4",
+      "roistat_param5": "roistat_param5",
+      "device": {
+        "os": "Windows 10 x64",
+        "os_icon": "https://cloud.roistat.com/img/os/windows.png",
+        "agent": "Yandex Browser 17.11 browser Blink",
+        "agent_icon": "https://cloud.roistat.com/img/browsers/Yandex.Browser.png"
+      },
+      "source": {
+        "referrer": "",
+        "system_name": "",
+        "display_name": "Прямые визиты",
+        "icon_url": "https://cloud.roistat.com/img/arrow-right.png",
+        "utm_source": null,
+        "utm_medium": null,
+        "utm_campaign": null,
+        "utm_term": null,
+        "utm_content": null,
+        "openstat": null
+      },
+      "geo": {
+        "country": "Украина",
+        "region": "Республика Крым",
+        "city": "Керчь",
+        "icon_url": "/img/country/ua.png",
+        "country_iso": "UA"
+      },
+      "order_ids": [1, 2],
+      "cost": 0,
+      "ab_test": []
+    }
+  ],
+  "total": 2,
+  "status": "success"
+}
