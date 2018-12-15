@@ -34,7 +34,29 @@ class SiteVisitTest extends AbstractTest {
         $this->assertSame('roistat_param4', $visit->getRoistatParam4());
         $this->assertSame('roistat_param5', $visit->getRoistatParam5());
         $this->assertSame('roistat_param5', $visit->getRoistatParam5());
-        // todo: after create new entity Device, Source, Geo
+        $device = $visit->getDevice();
+        $this->assertSame('Windows 10 x64', $device->getOs());
+        $this->assertSame('https://cloud.roistat.com/img/os/windows.png', $device->getOsIcon());
+        $this->assertSame('Yandex Browser 17.11 browser Blink', $device->getAgent());
+        $this->assertSame('https://cloud.roistat.com/img/browsers/Yandex.Browser.png', $device->getAgentIcon());
+        $source = $visit->getSource();
+        $this->assertSame('referrer', $source->getReferrer());
+        $this->assertSame('system_name', $source->getSystemName());
+        $this->assertSame('Прямые визиты', $source->getDisplayName());
+        $this->assertSame('https://cloud.roistat.com/img/arrow-right.png', $source->getIconUrl());
+        $this->assertSame('utm_source', $source->getUtmSource());
+        $this->assertSame('utm_medium', $source->getUtmMedium());
+        $this->assertSame('utm_campaign', $source->getUtmCampaign());
+        $this->assertSame('utm_term', $source->getUtmTerm());
+        $this->assertSame('utm_content', $source->getUtmContent());
+        $this->assertSame('openstat', $source->getOpenstat());
+        $geo = $visit->getGeo();
+        $this->assertSame('Украина', $geo->getCountry());
+        $this->assertSame('Республика Крым', $geo->getRegion());
+        $this->assertSame('Керчь', $geo->getCity());
+        $this->assertSame('/img/country/ua.png', $geo->getIconUrl());
+        $this->assertSame('UA', $geo->getCountryIso());
+
         $this->assertSame(2, count($visit->getOrderIds()));
         $this->assertSame(1, $visit->getOrderIds()[0]);
     }

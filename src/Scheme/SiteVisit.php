@@ -14,7 +14,6 @@ class SiteVisit extends AbstractScheme {
     protected $_entityName = 'SiteVisit';
 
     /**
-     * todo: return entities with pagination
      * @param Engine\Query $query
      * @return Entity\SiteVisit[]
      * @throws Exception\AuthException

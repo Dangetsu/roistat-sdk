@@ -21,16 +21,16 @@
         "agent_icon": "https://cloud.roistat.com/img/browsers/Yandex.Browser.png"
       },
       "source": {
-        "referrer": "",
-        "system_name": "",
+        "referrer": "referrer",
+        "system_name": "system_name",
         "display_name": "Прямые визиты",
         "icon_url": "https://cloud.roistat.com/img/arrow-right.png",
-        "utm_source": null,
-        "utm_medium": null,
-        "utm_campaign": null,
-        "utm_term": null,
-        "utm_content": null,
-        "openstat": null
+        "utm_source": "utm_source",
+        "utm_medium": "utm_medium",
+        "utm_campaign": "utm_campaign",
+        "utm_term": "utm_term",
+        "utm_content": "utm_content",
+        "openstat": "openstat"
       },
       "geo": {
         "country": "Украина",

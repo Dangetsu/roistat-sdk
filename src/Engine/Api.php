@@ -9,6 +9,8 @@ use GuzzleHttp;
 
 class Api {
     const API_URL = 'https://cloud.roistat.com/api/v1/';
+    const METHOD_POST = 'POST';
+    const METHOD_GET  = 'GET';
 
     /** @var GuzzleHttp\HandlerStack */
     private $_mockHandler;
@@ -37,14 +39,14 @@ class Api {
      * @throws Exception\AuthException
      * @throws Exception\BasicException
      */
-    public function send($apiMethod, $post = [], $method = 'GET') {
+    public function send($apiMethod, $post = [], $method = self::METHOD_GET) {
         $client = new GuzzleHttp\Client([
             'headers' => [ 'Content-Type' => 'application/json' ],
             'handler' => $this->_mockHandler,
         ]);
 
         $url = $this->_buildUrl($apiMethod);
-        if ($method === 'POST') {
+        if ($method === self::METHOD_POST) {
             $response = $client->post($url, [
                 GuzzleHttp\RequestOptions::JSON => $post
             ]);
