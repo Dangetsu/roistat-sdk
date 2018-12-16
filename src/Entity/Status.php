@@ -8,6 +8,8 @@ namespace Analytics\Entity;
 /**
  * @method string getName()
  * @method string getType()
+ * @method self setName(string $value)
+ * @method self setType(string $value)
  */
 class Status extends AbstractEntity {
     /** @var string */

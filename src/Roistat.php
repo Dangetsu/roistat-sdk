@@ -5,6 +5,7 @@
 
 namespace Analytics;
 
+use Analytics\Scheme\AbstractScheme;
 use GuzzleHttp;
 
 /**
@@ -14,6 +15,7 @@ use GuzzleHttp;
  * @method Scheme\Client Client()
  * @method Scheme\Order Order()
  * @method Scheme\OrderAdd OrderAdd()
+ * @method Scheme\Status Status()
  */
 class Roistat {
     /** @var Engine\Api */
