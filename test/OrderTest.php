@@ -70,4 +70,15 @@ class OrderTest extends AbstractTest {
         $response = $this->_roistat->Order()->statusUpdate('123', '1');
         $this->assertTrue($response);
     }
+
+    /**
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function testDelete() {
+        $handler = $this->_createMockResponse(['status' => 'success']);
+        $this->_roistat->addMockHandler($handler);
+        $response = $this->_roistat->Order()->delete('1');
+        $this->assertTrue($response);
+    }
 }

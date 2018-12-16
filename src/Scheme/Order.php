@@ -60,4 +60,16 @@ class Order extends AbstractScheme {
         $response = $this->_api->send("project/integration/order/{$orderId}/status/update", ['status_id' => $statusId], Engine\Api::METHOD_POST);
         return $response['status'] === 'success' ? true : false;
     }
+
+    /**
+     * todo: call from entity
+     * @param string $orderId
+     * @return bool
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function delete($orderId) {
+        $response = $this->_api->send("project/integration/order/{$orderId}/delete", [],Engine\Api::METHOD_POST);
+        return $response['status'] === 'success' ? true : false;
+    }
 }
