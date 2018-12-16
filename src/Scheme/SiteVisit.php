@@ -20,7 +20,7 @@ class SiteVisit extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function items(Engine\Query $query = null) {
-        $response = $this->_api->send('project/site/visit/list', $query, 'POST');
-        return $this->_buildEntity($response['data']);
+        $items = $this->_loadItems('project/site/visit/list', $query, 'data');
+        return $this->_buildEntity($items);
     }
 }

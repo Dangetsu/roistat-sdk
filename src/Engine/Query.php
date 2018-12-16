@@ -13,9 +13,11 @@ class Query {
     /** @var int */
     public $offset;
     /** @var int */
-    public $limit;
+    public $limit = 1000;
     /** @var array */
     public $extend;
+    /** @var bool */
+    private $load_all;
 
     /**
      * todo: add high query
@@ -64,5 +66,19 @@ class Query {
     public function setExtend(array $extend) {
         $this->extend = $extend;
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLoadAll() {
+        return $this->load_all;
+    }
+
+    /**
+     * @param bool $load_all
+     */
+    public function setLoadAll($load_all) {
+        $this->load_all = $load_all;
     }
 }

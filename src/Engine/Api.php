@@ -9,6 +9,7 @@ use GuzzleHttp;
 
 class Api {
     const API_URL = 'https://cloud.roistat.com/api/v1/';
+    const API_SLEEP_PER_REQUEST = 100000;
     const METHOD_POST = 'POST';
     const METHOD_GET  = 'GET';
 
@@ -61,7 +62,7 @@ class Api {
             }
             throw new Exception\BasicException($data['error']);
         }
-
+        usleep(self::API_SLEEP_PER_REQUEST);
         return $data;
     }
 
