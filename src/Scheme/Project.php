@@ -5,6 +5,7 @@
 
 namespace Analytics\Scheme;
 
+use Analytics\Engine;
 use Analytics\Engine\Exception;
 use Analytics\Entity;
 
@@ -29,7 +30,7 @@ class Project extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function create(Entity\Project $project) {
-        $response = $this->_api->send('account/project/create', $project, 'POST');
+        $response = $this->_api->send('account/project/create', $project, Engine\Api::METHOD_POST);
         $project->setId($response['data']['project_id'])->setCounter(new Entity\Counter($response['data']['counter']));
         return $project;
     }
