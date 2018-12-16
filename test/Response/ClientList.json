@@ -1,0 +1,48 @@
+{
+  "clients": [
+    {
+      "id": 7,
+      "first_visit_date": "2018-01-01 00:00:00",
+      "external_id": "105",
+      "name": "Имя клиента",
+      "phone": "79880002233",
+      "email": "test@roistat.test",
+      "first_order_date": "2018-01-02 00:00:00",
+      "last_order_date": "2018-01-03 00:00:00",
+      "order_count": 2,
+      "revenue": 220,
+      "profit": 120,
+      "birth_date": "1018-01-01",
+      "company": "roistat",
+      "comment": "test",
+      "client_url": "http://example.crm.com/contacts/105",
+      "first_visit_marker": "Гуголь",
+      "first_visit_marker_alias": "google",
+      "first_visit_marker_icon": "https://cloud.roistat.com/img/arrow-right.png",
+      "first_visit_marker_alias_level_1": ""
+    },
+    {
+      "id": 6,
+      "first_visit_date": null,
+      "external_id": "106",
+      "name": "Иван",
+      "phone": "79880002233",
+      "email": "test@roistat.test",
+      "first_order_date": null,
+      "last_order_date": null,
+      "order_count": 0,
+      "revenue": 0,
+      "profit": 0,
+      "birth_date": null,
+      "company": "",
+      "comment": null,
+      "client_url": "http://example.crm.com/contacts/106",
+      "first_visit_marker": null,
+      "first_visit_marker_alias": "",
+      "first_visit_marker_icon": "https://cloud.roistat.com/img/arrow-right.png",
+      "first_visit_marker_alias_level_1": ""
+    }
+  ],
+  "total": 2,
+  "status": "success"
+}
