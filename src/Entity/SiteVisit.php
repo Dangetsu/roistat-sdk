@@ -21,7 +21,9 @@ namespace Analytics\Entity;
  * @method Device getDevice()
  * @method Source getSource()
  * @method Geo getGeo()
- * @method string[] getOrderIds()
+ * @method int[] getOrderIds()
+ * @method int getCost()
+ * @method array getAbTest()
  */
 class SiteVisit extends AbstractEntity {
     /** @var string */
@@ -56,6 +58,10 @@ class SiteVisit extends AbstractEntity {
     protected $geo;
     /** @var string[] */
     protected $order_ids;
+    /** @var int */
+    protected $cost;
+    /** @var array */
+    protected $ab_test;
 
     public function __construct(array $data = []) {
         parent::__construct($data);
