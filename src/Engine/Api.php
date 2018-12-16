@@ -45,7 +45,7 @@ class Api {
             'headers' => [ 'Content-Type' => 'application/json' ],
             'handler' => $this->_mockHandler,
         ]);
-
+$test = json_encode($post);
         $url = $this->_buildUrl($apiMethod);
         if ($method === self::METHOD_POST) {
             $response = $client->post($url, [
