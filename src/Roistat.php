@@ -10,8 +10,10 @@ use GuzzleHttp;
 /**
  * @method Scheme\Project Project()
  * @method Scheme\Counter Counter()
- * @method Scheme\SiteVisit SiteVisit()
+ * @method Scheme\Visit Visit()
  * @method Scheme\Client Client()
+ * @method Scheme\Order Order()
+ * @method Scheme\OrderAdd OrderAdd()
  */
 class Roistat {
     /** @var Engine\Api */
@@ -43,6 +45,9 @@ class Roistat {
         return new $class_name($this->_api());
     }
 
+    /**
+     * @param GuzzleHttp\HandlerStack $handler
+     */
     public function addMockHandler(GuzzleHttp\HandlerStack $handler) {
         $this->_mockHandler = $handler;
     }

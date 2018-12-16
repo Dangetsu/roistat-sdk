@@ -31,22 +31,23 @@ abstract class AbstractEntity implements \JsonSerializable {
     /**
      * @param string $name
      * @param array $arguments
-     * @return self $this
+     * @return mixed $this
      */
     public function __call($name, $arguments) {
         if (preg_match('/^(get|set)(.+)/', $name,$match)) {
             $methodType = $match[1];
             $propertyName = mb_strtolower(preg_replace('/\B[A-Z]/', '_$0', $match[2]));
             if (!property_exists($this, $propertyName)) {
-                return $this;
+                return false;
             }
 
             if ($methodType === 'get') {
                 return $this->{$propertyName};
             }
             $this->{$propertyName} = array_key_exists(0, $arguments) ? $arguments[0] : null;
+            return $this;
         }
-        return $this;
+        return false;
     }
 
     /**

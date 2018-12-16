@@ -25,7 +25,7 @@ namespace Analytics\Entity;
  * @method int getCost()
  * @method array getAbTest()
  */
-class SiteVisit extends AbstractEntity {
+class Visit extends AbstractEntity {
     /** @var string */
     protected $first_visit_id;
     /** @var string */
@@ -63,10 +63,14 @@ class SiteVisit extends AbstractEntity {
     /** @var array */
     protected $ab_test;
 
+    /**
+     * Visit constructor.
+     * @param array $data
+     */
     public function __construct(array $data = []) {
         parent::__construct($data);
-        $this->device = new Device($this->device);
-        $this->source = new Source($this->source);
-        $this->geo = new Geo($this->geo);
+        if ($this->device !== null) $this->device = new Device($this->device);
+        if ($this->source !== null) $this->source = new Source($this->source);
+        if ($this->geo !== null) $this->geo = new Geo($this->geo);
     }
 }

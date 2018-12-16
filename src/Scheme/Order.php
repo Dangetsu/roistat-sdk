@@ -9,13 +9,13 @@ use Analytics\Engine;
 use Analytics\Engine\Exception;
 use Analytics\Entity;
 
-class SiteVisit extends AbstractScheme {
+class Order extends AbstractScheme {
     /** @var string */
-    protected $_entityName = 'SiteVisit';
+    protected $_entityName = 'Order';
 
     /**
      * @param Engine\Query $query
-     * @return Entity\SiteVisit[]
+     * @return Entity\Order[]
      * @throws Exception\AuthException
      * @throws Exception\BasicException
      */
@@ -23,7 +23,7 @@ class SiteVisit extends AbstractScheme {
         if ($query === null) {
             $query = new Engine\Query();
         }
-        $items = $this->_loadItems('project/site/visit/list', $query, 'data');
+        $items = $this->_loadItems('project/integration/order/list', $query, 'data');
         return $this->_buildEntity($items);
     }
 }

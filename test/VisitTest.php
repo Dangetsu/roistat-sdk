@@ -8,15 +8,15 @@ namespace Test;
 use Analytics\Engine\Exception;
 use Analytics\Engine;
 
-class SiteVisitTest extends AbstractTest {
+class VisitTest extends AbstractTest {
     /**
      * @throws Exception\AuthException
      * @throws Exception\BasicException
      */
     public function testItems() {
-        $handler = $this->_createMockResponse($this->_getSavedResponse('SiteVisitList'));
+        $handler = $this->_createMockResponse($this->_getSavedResponse('VisitList'));
         $this->_roistat->addMockHandler($handler);
-        $visits = $this->_roistat->SiteVisit()->items((new Engine\Query())->addFilter('host', '=', 'open-cart21')->setLimit(1));
+        $visits = $this->_roistat->Visit()->items((new Engine\Query())->addFilter('host', '=', 'open-cart21')->setLimit(1));
         $this->assertSame(1, count($visits));
 
         $visit = $visits[0];
