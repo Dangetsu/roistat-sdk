@@ -59,4 +59,15 @@ class OrderTest extends AbstractTest {
         $customFields = $this->_roistat->Order()->customFields();
         $this->assertSame(['Город', 'Касса', 'Менеджер'], $customFields);
     }
+
+    /**
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function testStatusUpdate() {
+        $handler = $this->_createMockResponse(['status' => 'success']);
+        $this->_roistat->addMockHandler($handler);
+        $response = $this->_roistat->Order()->statusUpdate('123', '1');
+        $this->assertTrue($response);
+    }
 }

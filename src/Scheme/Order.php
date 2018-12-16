@@ -47,4 +47,17 @@ class Order extends AbstractScheme {
         $response = $this->_api->send('project/analytics/order-custom-fields');
         return $response['fields'];
     }
+
+    /**
+     * todo: call from entity
+     * @param string $orderId
+     * @param string $statusId
+     * @return bool
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function statusUpdate($orderId, $statusId) {
+        $response = $this->_api->send("project/integration/order/{$orderId}/status/update", ['status_id' => $statusId], Engine\Api::METHOD_POST);
+        return $response['status'] === 'success' ? true : false;
+    }
 }
