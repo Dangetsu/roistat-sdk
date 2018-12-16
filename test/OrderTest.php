@@ -37,4 +37,15 @@ class OrderTest extends AbstractTest {
         $this->assertSame('progress', $status->getType());
         $this->assertSame('Ожидание клиента', $status->getName());
     }
+
+    /**
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function testExternalUrl() {
+        $handler = $this->_createMockResponse($this->_getSavedResponse('OrderExternalUrl'));
+        $this->_roistat->addMockHandler($handler);
+        $orderLink = $this->_roistat->Order()->externalUrl('123');
+        $this->assertSame('http://new123qwerty.amocrm.ru/leads/detail/123', $orderLink);
+    }
 }

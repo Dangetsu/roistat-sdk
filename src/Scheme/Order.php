@@ -26,4 +26,15 @@ class Order extends AbstractScheme {
         $items = $this->_loadItems('project/integration/order/list', $query, 'data');
         return $this->_buildEntity($items);
     }
+
+    /**
+     * @param string $orderId
+     * @return string
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function externalUrl($orderId) {
+        $response = $this->_api->send("project/orders/{$orderId}/external-url");
+        return $response['externalUrl'];
+    }
 }
