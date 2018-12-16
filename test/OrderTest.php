@@ -48,4 +48,15 @@ class OrderTest extends AbstractTest {
         $orderLink = $this->_roistat->Order()->externalUrl('123');
         $this->assertSame('http://new123qwerty.amocrm.ru/leads/detail/123', $orderLink);
     }
+
+    /**
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function testCustomFields() {
+        $handler = $this->_createMockResponse($this->_getSavedResponse('OrderCustomFields'));
+        $this->_roistat->addMockHandler($handler);
+        $customFields = $this->_roistat->Order()->customFields();
+        $this->assertSame(['Город', 'Касса', 'Менеджер'], $customFields);
+    }
 }

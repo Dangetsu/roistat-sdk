@@ -37,4 +37,14 @@ class Order extends AbstractScheme {
         $response = $this->_api->send("project/orders/{$orderId}/external-url");
         return $response['externalUrl'];
     }
+
+    /**
+     * @return array
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function customFields() {
+        $response = $this->_api->send('project/analytics/order-custom-fields');
+        return $response['fields'];
+    }
 }
