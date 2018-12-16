@@ -1,0 +1,33 @@
+{
+  "ProxyLeads": [
+    {
+      "id": "2",
+      "title": "Лид с формы заказать звонок",
+      "text": "Прошу перезвонить",
+      "name": "Питер Пен",
+      "phone": "71234567890",
+      "email": "peter@yandex.ru",
+      "roistat": "1000",
+      "creation_date": "2016-07-12 14:51:39",
+      "order_id": "12346",
+      "order_fields": {
+        "cost_field_id": "200"
+      }
+    },
+    {
+      "id": "1",
+      "title": "Лид с формы заказать звонок",
+      "text": "",
+      "name": "Алиса",
+      "phone": "79998887766",
+      "email": "alice@yandex.ru",
+      "roistat": "1001",
+      "creation_date": "2016-07-12 14:10:20",
+      "order_id": "12345",
+      "order_fields": {
+        "cost_field_id": "100"
+      }
+    }
+  ],
+  "status": "success"
+}

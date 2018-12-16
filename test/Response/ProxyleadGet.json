@@ -1,0 +1,17 @@
+{
+  "ProxyLead": {
+    "id": "2",
+    "title": "Лид с формы заказать звонок",
+    "text": "Прошу перезвонить",
+    "name": "Питер Пен",
+    "phone": "71234567890",
+    "email": "peter@yandex.ru",
+    "roistat": "1000",
+    "creation_date": "2016-07-12 14:51:39",
+    "order_id": "12346",
+    "order_fields": {
+      "cost_field_id": "200"
+    }
+  },
+  "status": "success"
+}

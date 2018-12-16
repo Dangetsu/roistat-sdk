@@ -16,6 +16,7 @@ use GuzzleHttp;
  * @method Scheme\Order Order()
  * @method Scheme\OrderAdd OrderAdd()
  * @method Scheme\Status Status()
+ * @method Scheme\Proxylead Proxylead()
  */
 class Roistat {
     /** @var Engine\Api */
