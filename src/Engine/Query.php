@@ -17,6 +17,8 @@ class Query {
     /** @var array */
     public $extend;
     /** @var bool */
+    public $is_deleted;
+    /** @var bool */
     private $load_all;
 
     /**
@@ -80,5 +82,12 @@ class Query {
      */
     public function setLoadAll($load_all) {
         $this->load_all = $load_all;
+    }
+
+    /**
+     * @param bool $is_deleted
+     */
+    public function setIsDeleted($is_deleted) {
+        $this->is_deleted = $is_deleted;
     }
 }

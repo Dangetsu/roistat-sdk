@@ -5,7 +5,6 @@
 
 namespace Analytics;
 
-use Analytics\Scheme\AbstractScheme;
 use GuzzleHttp;
 
 /**
