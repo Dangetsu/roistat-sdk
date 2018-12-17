@@ -11,6 +11,8 @@ use Analytics\Entity;
  * @method string getType()
  * @method string getValue()
  * @method string getSipTrunkPostfix()
+ * @method self setType(string $value)
+ * @method self setValue(string $value)
  */
 class Redirect extends Entity\AbstractEntity {
     /** @var string */

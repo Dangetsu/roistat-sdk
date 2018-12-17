@@ -6,6 +6,7 @@
 namespace Test\Calltracking;
 
 use Analytics\Engine\Exception;
+use Analytics\Entity\Calltracking\Script;
 
 class ScriptTestTest extends \Test\AbstractTest {
     /**
@@ -54,4 +55,48 @@ class ScriptTestTest extends \Test\AbstractTest {
         $this->assertSame('phone', $googleAnalytics->getCategory());
         $this->assertSame('roistat', $googleAnalytics->getLabel());
     }
+
+    /**
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function testCreate() {
+        $handler = $this->_createMockResponse($this->_getSavedResponse('Calltracking/ScriptCreate'));
+        $this->_roistat->addMockHandler($handler);
+
+        $script = (new Script())
+            ->setName('Базовый сценарий')
+            ->setCreationDate('2016-10-12T08:19:23+0000')
+            ->setIsEnabled(1)
+            ->setOptions((new Script\Options())
+                ->setCalltrackingType('dynamic')
+                ->setPhoneFormat('8 (XXX) XXX-XX-XX')
+                ->setCssSelector(['test'])
+                ->setSegments([['source', 'like%', 'organic']])
+                ->setRedirect((new Script\Options\Redirect())
+                    ->setType('phone')
+                    ->setValue('74951234567')
+                )
+            )
+            ->setIntegration((new Script\Integration())
+                ->setIsLeadAutoCreate(1)
+                ->setCrm((new Script\Integration\Crm())
+                    ->setEnabled(1)
+                    ->setCustomFields([
+                        (new Script\Integration\Crm\CustomFields())->setId('UF_CRM_1474452137')->setType('text')->setValue('eee')
+                    ])
+                )
+                ->setWebhook((new Script\Integration\Webhook())->setUrl('ne.buildie.ru/testhandler.php'))
+                ->setWebhookStart((new Script\Integration\Webhook()))
+                ->setGoogleAnalytics((new Script\Integration\GoogleAnalytics())
+                    ->setTrackingId('UA-123123-123')
+                    ->setAction('call')
+                    ->setCategory('phone')
+                    ->setLabel('roistat')
+                )
+            );
+        $scripts = $this->_roistat->Calltracking()->Script()->create($script);
+        $this->assertSame(1, $scripts->getId());
+    }
+
 }

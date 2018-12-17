@@ -9,6 +9,7 @@ use Analytics\Entity;
 
 /**
  * @method string getUrl()
+ * @method self setUrl(string $value)
  */
 class Webhook extends Entity\AbstractEntity {
     /** @var string */

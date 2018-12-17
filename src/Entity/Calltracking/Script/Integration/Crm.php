@@ -10,6 +10,8 @@ use Analytics\Entity;
 /**
  * @method int getEnabled()
  * @method Crm\CustomFields[] getCustomFields()
+ * @method self setEnabled(int $value)
+ * @method self setCustomFields(Crm\CustomFields[] $customFields)
  */
 class Crm extends Entity\AbstractEntity {
     /** @var int */

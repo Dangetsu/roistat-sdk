@@ -1,0 +1,58 @@
+{
+  "data": {
+    "id": 1,
+    "name": "Базовый сценарий",
+    "creation_date": "2016-10-12T08:19:23+0000",
+    "is_enabled": 1,
+    "call_count": 0,
+    "accuracy": null,
+    "options": {
+      "calltracking_type": "dynamic",
+      "static_source": null,
+      "css_selector": [
+        "test"
+      ],
+      "phone_format": "8 (XXX) XXX-XX-XX",
+      "redirect": {
+        "type": "phone",
+        "value": "74951234567"
+      },
+      "segments": [
+        [
+          "source",
+          "like%",
+          "organic"
+        ]
+      ],
+      "target_call_time": 0
+    },
+    "integration": {
+      "is_lead_auto_create": 1,
+      "crm": {
+        "enabled": 1,
+        "custom_fields": [
+          {
+            "id": "UF_CRM_1474452137",
+            "type": "text",
+            "value": "eee"
+          }
+        ]
+      },
+      "webhook": {
+        "url": "ne.buildie.ru/testhandler.php"
+      },
+      "webhook_start": {
+        "url": null
+      },
+      "google_analytics": {
+        "tracking_id": "UA-123123-123",
+        "action": "call",
+        "category": "phone",
+        "label": "roistat"
+      }
+    },
+    "needed_phone_count": null
+  },
+  "total": 1,
+  "status": "success"
+}

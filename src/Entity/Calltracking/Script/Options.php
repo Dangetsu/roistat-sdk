@@ -15,6 +15,11 @@ use Analytics\Entity;
  * @method Options\Redirect getRedirect()
  * @method array getSegments()
  * @method int getTargetCallTime()
+ * @method self setCalltrackingType(string $value)
+ * @method self setCssSelector(string[] $values)
+ * @method self setSegments(array $values)
+ * @method self setPhoneFormat(string $value)
+ * @method self setRedirect(Options\Redirect $redirect)
  */
 class Options extends Entity\AbstractEntity {
     /** @var string */

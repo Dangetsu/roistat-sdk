@@ -13,11 +13,14 @@ use Analytics\Entity;
  * @method int getIsEnabled()
  * @method int getCallCount()
  * @method int getAccuracy()
- *
  * @method Script\Options getOptions()
  * @method Script\Integration getIntegration()
- *
  * @method int getNeededPhoneCount()
+ * @method self setName(string $value)
+ * @method self setCreationDate(string $value)
+ * @method self setIsEnabled(int $value)
+ * @method self setOptions(Script\Options $options)
+ * @method self setIntegration(Script\Integration $integration)
  */
 class Script extends Entity\AbstractEntity {
     /** @var string */

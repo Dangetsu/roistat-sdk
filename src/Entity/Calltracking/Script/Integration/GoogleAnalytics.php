@@ -12,6 +12,10 @@ use Analytics\Entity;
  * @method string getAction()
  * @method string getCategory()
  * @method string getLabel()
+ * @method self setTrackingId(string $value)
+ * @method self setAction(string $value)
+ * @method self setCategory(string $value)
+ * @method self setLabel(string $value)
  */
 class GoogleAnalytics extends Entity\AbstractEntity {
     /** @var string */

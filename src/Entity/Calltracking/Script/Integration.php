@@ -13,6 +13,11 @@ use Analytics\Entity;
  * @method Integration\Webhook getWebhook()
  * @method Integration\GoogleAnalytics getGoogleAnalytics()
  * @method Integration\Webhook getWebhookStart()
+ * @method self setIsLeadAutoCreate(string $value)
+ * @method self setCrm(Integration\Crm $crm)
+ * @method self setWebhook(Integration\Webhook $webhook)
+ * @method self setWebhookStart(Integration\Webhook $webhook)
+ * @method self setGoogleAnalytics(Integration\GoogleAnalytics $analytics)
  */
 class Integration extends Entity\AbstractEntity {
     /** @var string */
