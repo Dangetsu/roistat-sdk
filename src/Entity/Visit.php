@@ -18,9 +18,9 @@ namespace Analytics\Entity;
  * @method string getRoistatParam3()
  * @method string getRoistatParam4()
  * @method string getRoistatParam5()
- * @method Device getDevice()
- * @method Source getSource()
- * @method Geo getGeo()
+ * @method Visit\Device getDevice()
+ * @method Visit\Source getSource()
+ * @method Visit\Geo getGeo()
  * @method int[] getOrderIds()
  * @method int getCost()
  * @method array getAbTest()
@@ -50,11 +50,11 @@ class Visit extends AbstractEntity {
     protected $roistat_param4;
     /** @var string */
     protected $roistat_param5;
-    /** @var Device */
+    /** @var Visit\Device */
     protected $device;
-    /** @var Source */
+    /** @var Visit\Source */
     protected $source;
-    /** @var Geo */
+    /** @var Visit\Geo */
     protected $geo;
     /** @var string[] */
     protected $order_ids;
@@ -69,8 +69,8 @@ class Visit extends AbstractEntity {
      */
     public function __construct(array $data = []) {
         parent::__construct($data);
-        if ($this->device !== null) $this->device = new Device($this->device);
-        if ($this->source !== null) $this->source = new Source($this->source);
-        if ($this->geo !== null) $this->geo = new Geo($this->geo);
+        if ($this->device !== null) $this->device = new Visit\Device($this->device);
+        if ($this->source !== null) $this->source = new Visit\Source($this->source);
+        if ($this->geo !== null) $this->geo = new Visit\Geo($this->geo);
     }
 }

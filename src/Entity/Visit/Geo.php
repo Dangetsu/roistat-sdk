@@ -3,7 +3,9 @@
  * @author Vladislav Alatorcev(Dangetsu) <clannad.business@gmail.com>
  */
 
-namespace Analytics\Entity;
+namespace Analytics\Entity\Visit;
+
+use Analytics\Entity;
 
 /**
  * @method string getCountry()
@@ -12,7 +14,7 @@ namespace Analytics\Entity;
  * @method string getIconUrl()
  * @method string getCountryIso()
  */
-class Geo extends AbstractEntity {
+class Geo extends Entity\AbstractEntity {
     /** @var string */
     protected $country;
     /** @var string */

@@ -11,16 +11,16 @@ use Analytics\Entity;
 
 class OrderAdd extends AbstractScheme {
     /** @var string */
-    protected $_entityName = 'OrderAddResponse';
+    protected $_entityName = 'OrderAdd\Response';
 
     /**
      * @param Entity\OrderAdd[] $orders
-     * @return Entity\OrderAddResponse
+     * @return Entity\OrderAdd\Response
      * @throws Exception\AuthException
      * @throws Exception\BasicException
      */
     public function create(array $orders) {
         $response = $this->_api->send('project/add-orders', $orders, Engine\Api::METHOD_POST);
-        return new Entity\OrderAddResponse($response);
+        return new Entity\OrderAdd\Response($response);
     }
 }

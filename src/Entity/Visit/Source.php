@@ -3,7 +3,9 @@
  * @author Vladislav Alatorcev(Dangetsu) <clannad.business@gmail.com>
  */
 
-namespace Analytics\Entity;
+namespace Analytics\Entity\Visit;
+
+use Analytics\Entity;
 
 /**
  * @method string getReferrer()
@@ -17,7 +19,7 @@ namespace Analytics\Entity;
  * @method string getUtmContent()
  * @method string getOpenstat()
  */
-class Source extends AbstractEntity {
+class Source extends Entity\AbstractEntity {
     /** @var string */
     protected $referrer;
     /** @var string */

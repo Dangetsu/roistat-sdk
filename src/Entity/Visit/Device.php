@@ -3,7 +3,9 @@
  * @author Vladislav Alatorcev(Dangetsu) <clannad.business@gmail.com>
  */
 
-namespace Analytics\Entity;
+namespace Analytics\Entity\Visit;
+
+use Analytics\Entity;
 
 /**
  * @method string getOs()
@@ -11,7 +13,7 @@ namespace Analytics\Entity;
  * @method string getAgent()
  * @method string getAgentIcon()
  */
-class Device extends AbstractEntity {
+class Device extends Entity\AbstractEntity {
     /** @var string */
     protected $os;
     /** @var string */

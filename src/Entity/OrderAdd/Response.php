@@ -3,7 +3,9 @@
  * @author Vladislav Alatorcev(Dangetsu) <clannad.business@gmail.com>
  */
 
-namespace Analytics\Entity;
+namespace Analytics\Entity\OrderAdd;
+
+use Analytics\Entity;
 
 /**
  * @method int getUploaded()
@@ -16,7 +18,7 @@ namespace Analytics\Entity;
  * @method string getComment()
  * @method int getSaved()
  */
-class OrderAddResponse extends AbstractEntity {
+class Response extends Entity\AbstractEntity {
     /** @var int */
     protected $uploaded;
     /** @var int */
