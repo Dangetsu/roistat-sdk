@@ -17,6 +17,7 @@ use GuzzleHttp;
  * @method Scheme\OrderAdd OrderAdd()
  * @method Scheme\Status Status()
  * @method Scheme\Proxylead Proxylead()
+ * @method Scheme\Calltracking Calltracking()
  */
 class Roistat {
     /** @var Engine\Api */
