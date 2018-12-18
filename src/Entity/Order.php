@@ -5,6 +5,8 @@
 
 namespace Analytics\Entity;
 
+use Analytics\Scheme;
+
 /**
  * @method string getUrl()
  * @method string getSourceType()
@@ -20,6 +22,8 @@ namespace Analytics\Entity;
  * @method string getPage()
  */
 class Order extends AbstractEntity {
+    /** @var Scheme\Order */
+    protected $_scheme;
     /** @var string */
     protected $url;
     /** @var string */
@@ -39,19 +43,9 @@ class Order extends AbstractEntity {
     /** @var array */
     protected $custom_fields;
     /** @var Status */
-    protected $status;
+    protected $status = 'Status';
     /** @var Visit */
-    protected $visit;
+    protected $visit = 'Visit';
     /** @var string */
     protected $page;
-
-    /**
-     * Order constructor.
-     * @param array $data
-     */
-    public function __construct(array $data = []) {
-        parent::__construct($data);
-        if ($this->visit !== null) $this->visit = new Visit($this->visit);
-        if ($this->status !== null) $this->status = new Status($this->status);
-    }
 }

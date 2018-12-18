@@ -21,6 +21,6 @@ class OrderAdd extends AbstractScheme {
      */
     public function create(array $orders) {
         $response = $this->_api->send('project/add-orders', $orders, Engine\Api::METHOD_POST);
-        return new Entity\OrderAdd\Response($response);
+        return (new Entity\OrderAdd\Response())->load($response);
     }
 }

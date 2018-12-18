@@ -51,8 +51,7 @@ class ClientTest extends AbstractTest {
         $this->_roistat->addMockHandler($handler);
 
         $request = [
-            (new Entity\Client())->setId(1)->setName('Petya')->setPhone('79780000000')->setEmail('test@test.ru')->setCompany('roistat')->setBirthDate('1970-01-01')->setFields(['field' => 'value']),
-            new Entity\Client(['id' => 2, 'name' => 'Vasya', 'phone' => '79780000001', 'email' => 'test2@test.ru', 'company' => 'roistat2', 'birth_date' => '1970-01-02', 'fields' => ['field' => 'value2']]),
+            (new Entity\Client($this->_roistat->Client()))->setId(1)->setName('Petya')->setPhone('79780000000')->setEmail('test@test.ru')->setCompany('roistat')->setBirthDate('1970-01-01')->setFields(['field' => 'value']),
         ];
         $response = $this->_roistat->Client()->create($request);
         $this->assertTrue($response);

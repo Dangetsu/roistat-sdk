@@ -34,19 +34,9 @@ class Script extends Entity\AbstractEntity {
     /** @var int */
     protected $accuracy;
     /** @var Script\Options */
-    protected $options;
+    protected $options = 'Options';
     /** @var Script\Integration */
-    protected $integration;
+    protected $integration = 'Integration';
     /** @var int */
     protected $needed_phone_count;
-
-    /**
-     * Script constructor.
-     * @param array $data
-     */
-    public function __construct(array $data = []) {
-        parent::__construct($data);
-        if ($this->options !== null) $this->options = new Script\Options($this->options);
-        if ($this->integration !== null) $this->integration = new Script\Integration($this->integration);
-    }
 }

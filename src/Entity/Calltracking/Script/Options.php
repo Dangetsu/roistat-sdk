@@ -31,18 +31,9 @@ class Options extends Entity\AbstractEntity {
     /** @var string */
     protected $phone_format;
     /** @var Options\Redirect */
-    protected $redirect;
+    protected $redirect = 'Redirect';
     /** @var array */
     protected $segments;
     /** @var int */
     protected $target_call_time;
-
-    /**
-     * Options constructor.
-     * @param array $data
-     */
-    public function __construct(array $data = []) {
-        parent::__construct($data);
-        if ($this->redirect !== null) $this->redirect = new Options\Redirect($this->redirect);
-    }
 }

@@ -31,7 +31,7 @@ class Project extends AbstractScheme {
      */
     public function create(Entity\Project $project) {
         $response = $this->_api->send('account/project/create', $project, Engine\Api::METHOD_POST);
-        $project->setId($response['data']['project_id'])->setCounter(new Entity\Counter($response['data']['counter']));
+        $project->setId($response['data']['project_id'])->setCounter((new Entity\Counter())->load($response['data']['counter']));
         return $project;
     }
 }

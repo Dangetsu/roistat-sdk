@@ -23,23 +23,11 @@ class Integration extends Entity\AbstractEntity {
     /** @var string */
     protected $is_lead_auto_create;
     /** @var Integration\Crm */
-    protected $crm;
+    protected $crm = 'Crm';
     /** @var Integration\Webhook */
-    protected $webhook;
+    protected $webhook = 'Webhook';
     /** @var Integration\GoogleAnalytics */
-    protected $google_analytics;
+    protected $google_analytics = 'GoogleAnalytics';
     /** @var Integration\Webhook */
-    protected $webhook_start;
-
-    /**
-     * Integration constructor.
-     * @param array $data
-     */
-    public function __construct(array $data = []) {
-        parent::__construct($data);
-        if ($this->crm !== null) $this->crm = new Integration\Crm($this->crm);
-        if ($this->webhook !== null) $this->webhook = new Integration\Webhook($this->webhook);
-        if ($this->webhook_start !== null) $this->webhook_start = new Integration\Webhook($this->webhook_start);
-        if ($this->google_analytics !== null) $this->google_analytics = new Integration\GoogleAnalytics($this->google_analytics);
-    }
+    protected $webhook_start = 'Webhook';
 }

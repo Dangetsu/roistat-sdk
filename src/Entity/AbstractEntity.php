@@ -5,27 +5,23 @@
 
 namespace Analytics\Entity;
 
+use Analytics\Scheme;
+
 /**
  * @method int getId()
  * @method self setId(int $value)
  */
 abstract class AbstractEntity implements \JsonSerializable {
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $id;
+    /** @var Scheme\AbstractScheme */
+    protected $_scheme;
 
     /**
-     * @param array $data
+     * @param Scheme\AbstractScheme $scheme
      */
-    public function __construct(array $data = []) {
-        $names = array_keys(get_object_vars($this));
-        foreach ($names as $name) {
-            if (!array_key_exists($name, $data)) {
-                continue;
-            }
-            $this->$name = $data[$name];
-        }
+    public function __construct($scheme = null) {
+        $this->_scheme = $scheme;
     }
 
     /**
@@ -51,13 +47,32 @@ abstract class AbstractEntity implements \JsonSerializable {
     }
 
     /**
+     * @param array $data
+     * @return mixed
+     */
+    public function load(array $data = []) {
+        $names = array_keys(get_object_vars($this));
+        foreach ($names as $name) {
+            if (!array_key_exists($name, $data)) {
+                continue;
+            }
+            if ($this->$name !== null) {
+                $this->$name = $this->_loadEntityWithCheckRecursive($data, $name);
+                continue;
+            }
+            $this->$name = $data[$name];
+        }
+        return $this;
+    }
+
+    /**
      * @return array
      */
     public function jsonSerialize() {
         $result = [];
         $properties = get_object_vars($this);
         foreach ($properties as $name => $value) {
-            if ($value === null) {
+            if ($name{0} === '_' || $value === null) {
                 continue;
             }
             /** @var AbstractEntity $value */
@@ -68,5 +83,35 @@ abstract class AbstractEntity implements \JsonSerializable {
             $result[$name] = $value;
         }
         return $result;
+    }
+
+    /**
+     * @param array $data
+     * @param string $name
+     * @return AbstractEntity|AbstractEntity[]
+     */
+    private function _loadEntityWithCheckRecursive(array $data, $name) {
+        if (mb_strpos($this->$name, '[]') === false) {
+            return $this->_loadEntity(__NAMESPACE__ . "\\{$this->$name}", $data[$name]);
+        }
+
+        $result = [];
+        $entityName = str_replace('[]', '', $this->$name);
+        foreach ($data[$name] as $datum) {
+            $result[] = $this->_loadEntity(__NAMESPACE__ . "\\{$entityName}", $datum);
+        }
+        return $result;
+    }
+
+    /**
+     * @param string $entityNamespace
+     * @param array $content
+     * @return AbstractEntity
+     */
+    private function _loadEntity($entityNamespace, array $content) {
+        /** @var self $entity */
+        $entity = new $entityNamespace($this->_scheme);
+        $entity->load($content);
+        return $entity;
     }
 }

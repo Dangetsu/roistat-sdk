@@ -18,7 +18,7 @@ class OrderAddTest extends AbstractTest {
         $this->_roistat->addMockHandler($handler);
 
         $request = [
-            (new Entity\OrderAdd())->setId(1)->setName('test deal')->setDateCreate('2017-10-23T17:04:57+0000')->setStatus('0')->setRoistat('test')->setClientId('1')->setPrice('100')->setCost('50'),
+            (new Entity\OrderAdd($this->_roistat->OrderAdd()))->setId(1)->setName('test deal')->setDateCreate('2017-10-23T17:04:57+0000')->setStatus('0')->setRoistat('test')->setClientId('1')->setPrice('100')->setCost('50'),
         ];
         $response = $this->_roistat->OrderAdd()->create($request);
         $this->assertSame(2, $response->getProcessed());

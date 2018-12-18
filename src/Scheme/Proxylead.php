@@ -33,6 +33,6 @@ class Proxylead extends AbstractScheme {
      */
     public function get($proxyleadId) {
         $response = $this->_api->send("project/proxy-leads/{$proxyleadId}");
-        return new Entity\Proxylead($response['ProxyLead']);
+        return (new Entity\Proxylead())->load($response['ProxyLead']);
     }
 }

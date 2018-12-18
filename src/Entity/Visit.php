@@ -51,26 +51,15 @@ class Visit extends AbstractEntity {
     /** @var string */
     protected $roistat_param5;
     /** @var Visit\Device */
-    protected $device;
+    protected $device = 'Visit\\Device';
     /** @var Visit\Source */
-    protected $source;
+    protected $source = 'Visit\\Source';
     /** @var Visit\Geo */
-    protected $geo;
+    protected $geo = 'Visit\\Geo';
     /** @var string[] */
     protected $order_ids;
     /** @var int */
     protected $cost;
     /** @var array */
     protected $ab_test;
-
-    /**
-     * Visit constructor.
-     * @param array $data
-     */
-    public function __construct(array $data = []) {
-        parent::__construct($data);
-        if ($this->device !== null) $this->device = new Visit\Device($this->device);
-        if ($this->source !== null) $this->source = new Visit\Source($this->source);
-        if ($this->geo !== null) $this->geo = new Visit\Geo($this->geo);
-    }
 }
