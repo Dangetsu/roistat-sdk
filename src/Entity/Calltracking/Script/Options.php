@@ -31,7 +31,7 @@ class Options extends Entity\AbstractEntity {
     /** @var string */
     protected $phone_format;
     /** @var Options\Redirect */
-    protected $redirect = 'Redirect';
+    protected $redirect = 'Options\\Redirect';
     /** @var array */
     protected $segments;
     /** @var int */

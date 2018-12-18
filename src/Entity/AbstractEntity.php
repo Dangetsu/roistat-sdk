@@ -91,14 +91,15 @@ abstract class AbstractEntity implements \JsonSerializable {
      * @return AbstractEntity|AbstractEntity[]
      */
     private function _loadEntityWithCheckRecursive(array $data, $name) {
+        $namespace = substr(get_class($this), 0, strrpos(get_class($this), '\\'));
+        $entityName = str_replace('[]', '', $this->$name);
         if (mb_strpos($this->$name, '[]') === false) {
-            return $this->_loadEntity(__NAMESPACE__ . "\\{$this->$name}", $data[$name]);
+            return $this->_loadEntity("{$namespace}\\{$entityName}", $data[$name]);
         }
 
         $result = [];
-        $entityName = str_replace('[]', '', $this->$name);
         foreach ($data[$name] as $datum) {
-            $result[] = $this->_loadEntity(__NAMESPACE__ . "\\{$entityName}", $datum);
+            $result[] = $this->_loadEntity("{$namespace}\\{$entityName}", $datum);
         }
         return $result;
     }

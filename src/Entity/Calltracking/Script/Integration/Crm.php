@@ -17,5 +17,5 @@ class Crm extends Entity\AbstractEntity {
     /** @var int */
     protected $enabled;
     /** @var Crm\CustomFields[] */
-    protected $custom_fields = 'CustomFields[]';
+    protected $custom_fields = 'Crm\\CustomFields[]';
 }

@@ -23,11 +23,11 @@ class Integration extends Entity\AbstractEntity {
     /** @var string */
     protected $is_lead_auto_create;
     /** @var Integration\Crm */
-    protected $crm = 'Crm';
+    protected $crm = 'Integration\\Crm';
     /** @var Integration\Webhook */
-    protected $webhook = 'Webhook';
+    protected $webhook = 'Integration\\Webhook';
     /** @var Integration\GoogleAnalytics */
-    protected $google_analytics = 'GoogleAnalytics';
+    protected $google_analytics = 'Integration\\GoogleAnalytics';
     /** @var Integration\Webhook */
-    protected $webhook_start = 'Webhook';
+    protected $webhook_start = 'Integration\\Webhook';
 }

@@ -34,9 +34,9 @@ class Script extends Entity\AbstractEntity {
     /** @var int */
     protected $accuracy;
     /** @var Script\Options */
-    protected $options = 'Options';
+    protected $options = 'Script\\Options';
     /** @var Script\Integration */
-    protected $integration = 'Integration';
+    protected $integration = 'Script\\Integration';
     /** @var int */
     protected $needed_phone_count;
 }
