@@ -49,4 +49,15 @@ class Script extends Scheme\AbstractScheme {
         $response = $this->_base->api()->send('project/calltracking/script/update', $script, Engine\Api::METHOD_POST);
         return $response['status'] === 'success' ? true : false;
     }
+
+    /**
+     * @param int $id
+     * @return bool
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function delete($id) {
+        $response = $this->_base->api()->send('project/calltracking/script/delete', ['id' => $id], Engine\Api::METHOD_POST);
+        return $response['status'] === 'success' ? true : false;
+    }
 }

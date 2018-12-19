@@ -52,4 +52,13 @@ class Script extends Entity\AbstractEntity {
     public function update() {
         return $this->_scheme->update($this);
     }
+
+    /**
+     * @return bool
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function delete() {
+        return $this->_scheme->delete($this->getId());
+    }
 }

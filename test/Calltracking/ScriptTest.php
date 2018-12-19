@@ -118,4 +118,15 @@ class ScriptTestTest extends \Test\AbstractTest {
             ->update();
         $this->assertTrue($isUpdate);
     }
+
+    /**
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function testDelete() {
+        $handler = $this->_createMockResponse(['status' => 'success']);
+        $this->_roistat->api()->addMockHandler($handler);
+        $isDeleted = (new Scheme\Calltracking\Script($this->_roistat))->delete(1);
+        $this->assertTrue($isDeleted);
+    }
 }
