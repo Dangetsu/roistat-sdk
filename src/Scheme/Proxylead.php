@@ -21,7 +21,7 @@ class Proxylead extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function items(\DateTime $periodFrom, \DateTime $periodTo) {
-        $response = $this->_api->send('project/proxy-leads', ['period' => "{$periodFrom->format('Y-m-d')}-{$periodTo->format('Y-m-d')}"]);
+        $response = $this->_base->api()->send('project/proxy-leads', ['period' => "{$periodFrom->format('Y-m-d')}-{$periodTo->format('Y-m-d')}"]);
         return $this->_buildEntity($response['ProxyLeads']);
     }
 
@@ -32,7 +32,7 @@ class Proxylead extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function get($proxyleadId) {
-        $response = $this->_api->send("project/proxy-leads/{$proxyleadId}");
+        $response = $this->_base->api()->send("project/proxy-leads/{$proxyleadId}");
         return (new Entity\Proxylead())->load($response['ProxyLead']);
     }
 }

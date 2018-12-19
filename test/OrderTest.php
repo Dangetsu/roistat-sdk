@@ -6,6 +6,7 @@
 namespace Test;
 
 use Analytics\Engine\Exception;
+use Analytics\Scheme;
 
 class OrderTest extends AbstractTest {
     /**
@@ -15,7 +16,7 @@ class OrderTest extends AbstractTest {
     public function testItems() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('OrderList'));
         $this->_roistat->addMockHandler($handler);
-        $orders = $this->_roistat->Order()->items();
+        $orders = (new Scheme\Order($this->_roistat))->items();
         $this->assertSame(1, count($orders));
 
         $order = $orders[0];
@@ -45,7 +46,7 @@ class OrderTest extends AbstractTest {
     public function testExternalUrl() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('OrderExternalUrl'));
         $this->_roistat->addMockHandler($handler);
-        $orderLink = $this->_roistat->Order()->externalUrl('123');
+        $orderLink = (new Scheme\Order($this->_roistat))->externalUrl('123');
         $this->assertSame('http://new123qwerty.amocrm.ru/leads/detail/123', $orderLink);
     }
 
@@ -56,7 +57,7 @@ class OrderTest extends AbstractTest {
     public function testCustomFields() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('OrderCustomFields'));
         $this->_roistat->addMockHandler($handler);
-        $customFields = $this->_roistat->Order()->customFields();
+        $customFields = (new Scheme\Order($this->_roistat))->customFields();
         $this->assertSame(['Город', 'Касса', 'Менеджер'], $customFields);
     }
 
@@ -67,7 +68,7 @@ class OrderTest extends AbstractTest {
     public function testStatusUpdate() {
         $handler = $this->_createMockResponse(['status' => 'success']);
         $this->_roistat->addMockHandler($handler);
-        $response = $this->_roistat->Order()->statusUpdate('123', '1');
+        $response = (new Scheme\Order($this->_roistat))->statusUpdate('123', '1');
         $this->assertTrue($response);
     }
 
@@ -78,7 +79,7 @@ class OrderTest extends AbstractTest {
     public function testDelete() {
         $handler = $this->_createMockResponse(['status' => 'success']);
         $this->_roistat->addMockHandler($handler);
-        $response = $this->_roistat->Order()->delete('1');
+        $response = (new Scheme\Order($this->_roistat))->delete('1');
         $this->assertTrue($response);
     }
 }

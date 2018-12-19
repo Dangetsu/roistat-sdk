@@ -6,6 +6,7 @@
 namespace Test;
 
 use Analytics\Engine\Exception;
+use Analytics\Scheme;
 use Analytics\Entity;
 
 class ClientTest extends AbstractTest {
@@ -16,7 +17,7 @@ class ClientTest extends AbstractTest {
     public function testItems() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('ClientList'));
         $this->_roistat->addMockHandler($handler);
-        $clients = $this->_roistat->Client()->items();
+        $clients = (new Scheme\Client($this->_roistat))->items();
         $this->assertSame(2, count($clients));
 
         $client = $clients[0];
@@ -51,9 +52,9 @@ class ClientTest extends AbstractTest {
         $this->_roistat->addMockHandler($handler);
 
         $request = [
-            (new Entity\Client($this->_roistat->Client()))->setId(1)->setName('Petya')->setPhone('79780000000')->setEmail('test@test.ru')->setCompany('roistat')->setBirthDate('1970-01-01')->setFields(['field' => 'value']),
+            (new Entity\Client())->setId(1)->setName('Petya')->setPhone('79780000000')->setEmail('test@test.ru')->setCompany('roistat')->setBirthDate('1970-01-01')->setFields(['field' => 'value']),
         ];
-        $response = $this->_roistat->Client()->create($request);
+        $response = (new Scheme\Client($this->_roistat))->create($request);
         $this->assertTrue($response);
     }
 }

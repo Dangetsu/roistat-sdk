@@ -7,6 +7,7 @@ namespace Test;
 
 use Analytics\Engine\Exception;
 use Analytics\Engine;
+use Analytics\Scheme;
 
 class VisitTest extends AbstractTest {
     /**
@@ -16,7 +17,7 @@ class VisitTest extends AbstractTest {
     public function testItems() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('VisitList'));
         $this->_roistat->addMockHandler($handler);
-        $visits = $this->_roistat->Visit()->items((new Engine\Query())->addFilter('host', '=', 'open-cart21')->setLimit(1));
+        $visits = (new Scheme\Visit($this->_roistat))->items((new Engine\Query())->addFilter('host', '=', 'open-cart21')->setLimit(1));
         $this->assertSame(1, count($visits));
 
         $visit = $visits[0];

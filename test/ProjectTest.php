@@ -7,6 +7,7 @@ namespace Test;
 
 use Analytics\Engine\Exception;
 use Analytics\Entity;
+use Analytics\Scheme;
 
 class ProjectTest extends AbstractTest {
     /**
@@ -19,7 +20,7 @@ class ProjectTest extends AbstractTest {
             ['id' => 58211, 'name' => 'API', 'profit' => '0', 'creation_date' => '2017-09-29 08:41:27', 'currency' => 'RUB', 'is_owner' => 1],
         ], 'status' => 'success']);
         $this->_roistat->addMockHandler($handler);
-        $projects = $this->_roistat->Project()->items();
+        $projects = (new Scheme\Project($this->_roistat))->items();
         $this->assertSame(2, count($projects));
 
         $project = $projects[0];
@@ -38,7 +39,7 @@ class ProjectTest extends AbstractTest {
     public function testCreate() {
         $handler = $this->_createMockResponse(['data' => ['project_id' => 99999, 'counter' => ['id' => '213214', 'code' => '<script>counter</script>']], 'status' => 'success']);
         $this->_roistat->addMockHandler($handler);
-        $project = $this->_roistat->Project()->create((new Entity\Project())->setName('TestName')->setCurrency('USD'));
+        $project = (new Scheme\Project($this->_roistat))->create((new Entity\Project())->setName('TestName')->setCurrency('USD'));
         $this->assertSame(99999, $project->getId());
         $this->assertSame('TestName', $project->getName());
         $this->assertSame('USD', $project->getCurrency());

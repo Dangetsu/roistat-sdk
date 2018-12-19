@@ -35,7 +35,7 @@ class Script extends Scheme\AbstractScheme {
      * @throws Exception\BasicException
      */
     public function create(Calltracking\Script $script) {
-        $response = $this->_api->send('project/calltracking/script/create', $script, Engine\Api::METHOD_POST);
+        $response = $this->_base->api()->send('project/calltracking/script/create', $script, Engine\Api::METHOD_POST);
         return (new Calltracking\Script())->load($response['data']);
     }
 }

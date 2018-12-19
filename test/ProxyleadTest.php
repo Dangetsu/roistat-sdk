@@ -7,6 +7,7 @@ namespace Test;
 
 use Analytics\Engine\Exception;
 use Analytics\Entity;
+use Analytics\Scheme;
 
 class ProxyleadTest extends AbstractTest {
     /**
@@ -16,7 +17,7 @@ class ProxyleadTest extends AbstractTest {
     public function testItems() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('ProxyleadList'));
         $this->_roistat->addMockHandler($handler);
-        $leads = $this->_roistat->Proxylead()->items(new \DateTime('2015-12-12'), new \DateTime());
+        $leads = (new Scheme\Proxylead($this->_roistat))->items(new \DateTime('2015-12-12'), new \DateTime());
         $this->assertSame(2, count($leads));
         $this->_assertLead($leads[0]);
     }
@@ -28,7 +29,7 @@ class ProxyleadTest extends AbstractTest {
     public function testGet() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('ProxyleadGet'));
         $this->_roistat->addMockHandler($handler);
-        $lead = $this->_roistat->Proxylead()->get('2');
+        $lead = (new Scheme\Proxylead($this->_roistat))->get('2');
         $this->_assertLead($lead);
     }
 

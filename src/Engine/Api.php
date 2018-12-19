@@ -26,7 +26,7 @@ class Api {
      * @param int $project_id
      * @param GuzzleHttp\HandlerStack|null $handler
      */
-    public function __construct($api_key, $project_id, $handler) {
+    public function __construct($api_key, $project_id, $handler = null) {
         $this->_project_id = $project_id;
         $this->_api_key = $api_key;
         $this->_mockHandler = $handler;

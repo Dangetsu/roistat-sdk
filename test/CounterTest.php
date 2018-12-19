@@ -5,6 +5,7 @@
 
 namespace Test;
 
+use Analytics\Scheme;
 use Analytics\Engine\Exception;
 
 class CounterTest extends AbstractTest {
@@ -15,7 +16,7 @@ class CounterTest extends AbstractTest {
     public function testGet() {
         $handler = $this->_createMockResponse(['data' => [['id' => '213214', 'code' => '<script>counter</script>']]]);
         $this->_roistat->addMockHandler($handler);
-        $counter = $this->_roistat->Counter()->get();
+        $counter = (new Scheme\Counter($this->_roistat))->get();
         $this->assertNotNull($counter);
     }
 }

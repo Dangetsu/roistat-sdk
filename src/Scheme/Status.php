@@ -17,7 +17,7 @@ class Status extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function create(array $statuses) {
-        $response = $this->_api->send('project/set-statuses', $statuses, Engine\Api::METHOD_POST);
+        $response = $this->_base->api()->send('project/set-statuses', $statuses, Engine\Api::METHOD_POST);
         return $response['status'] === 'success' ? true : false;
     }
 }

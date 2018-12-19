@@ -5,6 +5,7 @@
 
 namespace Analytics\Scheme;
 
+use Analytics;
 use Analytics\Engine;
 use Analytics\Engine\Exception;
 use Analytics\Entity;
@@ -14,15 +15,15 @@ abstract class AbstractScheme {
 
     /** @var string */
     protected $_entityName;
-    /** @var Engine\Api */
-    protected $_api;
+    /** @var Analytics\Roistat */
+    protected $_base;
 
     /**
      * AbstractScheme constructor.
-     * @param Engine\Api $api
+     * @param Analytics\Roistat $base
      */
-    public function __construct(Engine\Api $api) {
-        $this->_api = $api;
+    public function __construct(Analytics\Roistat $base) {
+        $this->_base = $base;
     }
 
     /**
@@ -36,7 +37,7 @@ abstract class AbstractScheme {
     protected function _loadItems($method, Engine\Query $query, $itemsKey) {
         $result = [];
         for ($page = 1; $page <= self::MAX_PAGE_COUNT; $page++) {
-            $response = $this->_api->send($method, $query, Engine\Api::METHOD_POST);
+            $response = $this->_base->api()->send($method, $query, Engine\Api::METHOD_POST);
             if (!array_key_exists($itemsKey, $response)) {
                 throw new Exception\BasicException('Data is not exist in response');
             }

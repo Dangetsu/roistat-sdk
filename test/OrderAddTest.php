@@ -7,6 +7,7 @@ namespace Test;
 
 use Analytics\Engine\Exception;
 use Analytics\Entity;
+use Analytics\Scheme;
 
 class OrderAddTest extends AbstractTest {
     /**
@@ -18,9 +19,9 @@ class OrderAddTest extends AbstractTest {
         $this->_roistat->addMockHandler($handler);
 
         $request = [
-            (new Entity\OrderAdd($this->_roistat->OrderAdd()))->setId(1)->setName('test deal')->setDateCreate('2017-10-23T17:04:57+0000')->setStatus('0')->setRoistat('test')->setClientId('1')->setPrice('100')->setCost('50'),
+            (new Entity\OrderAdd())->setId(1)->setName('test deal')->setDateCreate('2017-10-23T17:04:57+0000')->setStatus('0')->setRoistat('test')->setClientId('1')->setPrice('100')->setCost('50'),
         ];
-        $response = $this->_roistat->OrderAdd()->create($request);
+        $response = (new Scheme\OrderAdd($this->_roistat))->create($request);
         $this->assertSame(2, $response->getProcessed());
         $this->assertSame(0, $response->getSkippedByStatus());
         $this->assertSame(0, $response->getSkippedByWaitingVisitInfo());

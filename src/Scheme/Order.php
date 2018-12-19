@@ -34,7 +34,7 @@ class Order extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function externalUrl($orderId) {
-        $response = $this->_api->send("project/orders/{$orderId}/external-url");
+        $response = $this->_base->api()->send("project/orders/{$orderId}/external-url");
         return $response['externalUrl'];
     }
 
@@ -44,7 +44,7 @@ class Order extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function customFields() {
-        $response = $this->_api->send('project/analytics/order-custom-fields');
+        $response = $this->_base->api()->send('project/analytics/order-custom-fields');
         return $response['fields'];
     }
 
@@ -57,7 +57,7 @@ class Order extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function statusUpdate($orderId, $statusId) {
-        $response = $this->_api->send("project/integration/order/{$orderId}/status/update", ['status_id' => $statusId], Engine\Api::METHOD_POST);
+        $response = $this->_base->api()->send("project/integration/order/{$orderId}/status/update", ['status_id' => $statusId], Engine\Api::METHOD_POST);
         return $response['status'] === 'success' ? true : false;
     }
 
@@ -69,7 +69,7 @@ class Order extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function delete($orderId) {
-        $response = $this->_api->send("project/integration/order/{$orderId}/delete", [],Engine\Api::METHOD_POST);
+        $response = $this->_base->api()->send("project/integration/order/{$orderId}/delete", [],Engine\Api::METHOD_POST);
         return $response['status'] === 'success' ? true : false;
     }
 }

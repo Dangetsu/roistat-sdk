@@ -34,7 +34,7 @@ class Client extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function create(array $clients) {
-        $response = $this->_api->send('project/clients/import', $clients, Engine\Api::METHOD_POST);
+        $response = $this->_base->api()->send('project/clients/import', $clients, Engine\Api::METHOD_POST);
         return $response['status'] === 'success' ? true : false;
     }
 }

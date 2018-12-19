@@ -5,6 +5,7 @@
 
 namespace Test\Calltracking;
 
+use Analytics\Scheme;
 use Analytics\Engine\Exception;
 use Analytics\Entity\Calltracking\Script;
 
@@ -16,7 +17,7 @@ class ScriptTestTest extends \Test\AbstractTest {
     public function testItems() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('Calltracking/ScriptList'));
         $this->_roistat->addMockHandler($handler);
-        $scripts = $this->_roistat->Calltracking()->Script()->items();
+        $scripts = (new Scheme\Calltracking\Script($this->_roistat))->items();
         $this->assertSame(1, count($scripts));
 
         $script = $scripts[0];
@@ -95,7 +96,7 @@ class ScriptTestTest extends \Test\AbstractTest {
                     ->setLabel('roistat')
                 )
             );
-        $scripts = $this->_roistat->Calltracking()->Script()->create($script);
+        $scripts = (new Scheme\Calltracking\Script($this->_roistat))->create($script);
         $this->assertSame(1, $scripts->getId());
     }
 

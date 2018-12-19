@@ -19,7 +19,7 @@ class Project extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function items() {
-        $response = $this->_api->send('user/projects');
+        $response = $this->_base->api()->send('user/projects');
         return $this->_buildEntity($response['projects']);
     }
 
@@ -30,7 +30,7 @@ class Project extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function create(Entity\Project $project) {
-        $response = $this->_api->send('account/project/create', $project, Engine\Api::METHOD_POST);
+        $response = $this->_base->api()->send('account/project/create', $project, Engine\Api::METHOD_POST);
         $project->setId($response['data']['project_id'])->setCounter((new Entity\Counter())->load($response['data']['counter']));
         return $project;
     }
