@@ -67,6 +67,13 @@ class Api {
     }
 
     /**
+     * @param GuzzleHttp\HandlerStack $handler
+     */
+    public function addMockHandler(GuzzleHttp\HandlerStack $handler) {
+        $this->_mockHandler = $handler;
+    }
+
+    /**
      * @param string $apiMethod
      * @return string
      */

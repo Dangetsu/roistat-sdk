@@ -16,7 +16,7 @@ class VisitTest extends AbstractTest {
      */
     public function testItems() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('VisitList'));
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
         $visits = (new Scheme\Visit($this->_roistat))->items((new Engine\Query())->addFilter('host', '=', 'open-cart21')->setLimit(1));
         $this->assertSame(1, count($visits));
 

@@ -6,6 +6,8 @@
 namespace Analytics\Entity\Calltracking;
 
 use Analytics\Entity;
+use Analytics\Scheme;
+use Analytics\Engine\Exception;
 
 /**
  * @method string getName()
@@ -16,13 +18,15 @@ use Analytics\Entity;
  * @method Script\Options getOptions()
  * @method Script\Integration getIntegration()
  * @method int getNeededPhoneCount()
- * @method self setName(string $value)
- * @method self setCreationDate(string $value)
- * @method self setIsEnabled(int $value)
- * @method self setOptions(Script\Options $options)
- * @method self setIntegration(Script\Integration $integration)
+ * @method Script setName(string $value)
+ * @method Script setCreationDate(string $value)
+ * @method Script setIsEnabled(int $value)
+ * @method Script setOptions(Script\Options $options)
+ * @method Script setIntegration(Script\Integration $integration)
  */
 class Script extends Entity\AbstractEntity {
+    /** @var Scheme\Calltracking\Script */
+    protected $_scheme;
     /** @var string */
     protected $name;
     /** @var string */
@@ -39,4 +43,13 @@ class Script extends Entity\AbstractEntity {
     protected $integration = 'Script\\Integration';
     /** @var int */
     protected $needed_phone_count;
+
+    /**
+     * @return bool
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function update() {
+        return $this->_scheme->update($this);
+    }
 }

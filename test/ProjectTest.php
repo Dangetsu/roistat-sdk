@@ -19,7 +19,7 @@ class ProjectTest extends AbstractTest {
             ['id' => 58211, 'name' => 'API', 'profit' => '0', 'creation_date' => '2017-09-29 08:41:27', 'currency' => 'RUB', 'is_owner' => 1],
             ['id' => 58211, 'name' => 'API', 'profit' => '0', 'creation_date' => '2017-09-29 08:41:27', 'currency' => 'RUB', 'is_owner' => 1],
         ], 'status' => 'success']);
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
         $projects = (new Scheme\Project($this->_roistat))->items();
         $this->assertSame(2, count($projects));
 
@@ -38,7 +38,7 @@ class ProjectTest extends AbstractTest {
      */
     public function testCreate() {
         $handler = $this->_createMockResponse(['data' => ['project_id' => 99999, 'counter' => ['id' => '213214', 'code' => '<script>counter</script>']], 'status' => 'success']);
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
         $project = (new Scheme\Project($this->_roistat))->create((new Entity\Project())->setName('TestName')->setCurrency('USD'));
         $this->assertSame(99999, $project->getId());
         $this->assertSame('TestName', $project->getName());

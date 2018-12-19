@@ -26,13 +26,6 @@ class Roistat {
     }
 
     /**
-     * @param GuzzleHttp\HandlerStack $handler
-     */
-    public function addMockHandler(GuzzleHttp\HandlerStack $handler) {
-        $this->_api = $this->_api = new Engine\Api($this->_api_key, $this->_project_id, $handler);
-    }
-
-    /**
      * @return Engine\Api
      */
     public function api() {

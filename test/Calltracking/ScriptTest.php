@@ -16,7 +16,7 @@ class ScriptTestTest extends \Test\AbstractTest {
      */
     public function testItems() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('Calltracking/ScriptList'));
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
         $scripts = (new Scheme\Calltracking\Script($this->_roistat))->items();
         $this->assertSame(1, count($scripts));
 
@@ -63,7 +63,7 @@ class ScriptTestTest extends \Test\AbstractTest {
      */
     public function testCreate() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('Calltracking/ScriptCreate'));
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
 
         $script = (new Script())
             ->setName('Базовый сценарий')
@@ -100,4 +100,22 @@ class ScriptTestTest extends \Test\AbstractTest {
         $this->assertSame(1, $scripts->getId());
     }
 
+    /**
+     * @throws Exception\AuthException
+     * @throws Exception\BasicException
+     */
+    public function testUpdate() {
+        $handler = $this->_createMockResponse($this->_getSavedResponse('Calltracking/ScriptList'));
+        $this->_roistat->api()->addMockHandler($handler);
+        $scripts = (new Scheme\Calltracking\Script($this->_roistat))->items();
+        $this->assertSame(1, count($scripts));
+        $script = $scripts[0];
+
+        $handler = $this->_createMockResponse(['status' => 'success']);
+        $this->_roistat->api()->addMockHandler($handler);
+        $isUpdate = $script->setName('test')
+            ->setCreationDate('2018-09-09 12:12:12')
+            ->update();
+        $this->assertTrue($isUpdate);
+    }
 }

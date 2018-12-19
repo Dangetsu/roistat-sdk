@@ -16,7 +16,7 @@ class ClientTest extends AbstractTest {
      */
     public function testItems() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('ClientList'));
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
         $clients = (new Scheme\Client($this->_roistat))->items();
         $this->assertSame(2, count($clients));
 
@@ -49,7 +49,7 @@ class ClientTest extends AbstractTest {
      */
     public function testCreate() {
         $handler = $this->_createMockResponse(['status' => 'success']);
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
 
         $request = [
             (new Entity\Client())->setId(1)->setName('Petya')->setPhone('79780000000')->setEmail('test@test.ru')->setCompany('roistat')->setBirthDate('1970-01-01')->setFields(['field' => 'value']),

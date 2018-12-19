@@ -16,7 +16,7 @@ class ProxyleadTest extends AbstractTest {
      */
     public function testItems() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('ProxyleadList'));
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
         $leads = (new Scheme\Proxylead($this->_roistat))->items(new \DateTime('2015-12-12'), new \DateTime());
         $this->assertSame(2, count($leads));
         $this->_assertLead($leads[0]);
@@ -28,7 +28,7 @@ class ProxyleadTest extends AbstractTest {
      */
     public function testGet() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('ProxyleadGet'));
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
         $lead = (new Scheme\Proxylead($this->_roistat))->get('2');
         $this->_assertLead($lead);
     }

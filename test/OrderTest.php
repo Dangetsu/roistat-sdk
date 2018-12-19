@@ -15,7 +15,7 @@ class OrderTest extends AbstractTest {
      */
     public function testItems() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('OrderList'));
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
         $orders = (new Scheme\Order($this->_roistat))->items();
         $this->assertSame(1, count($orders));
 
@@ -45,7 +45,7 @@ class OrderTest extends AbstractTest {
      */
     public function testExternalUrl() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('OrderExternalUrl'));
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
         $orderLink = (new Scheme\Order($this->_roistat))->externalUrl('123');
         $this->assertSame('http://new123qwerty.amocrm.ru/leads/detail/123', $orderLink);
     }
@@ -56,7 +56,7 @@ class OrderTest extends AbstractTest {
      */
     public function testCustomFields() {
         $handler = $this->_createMockResponse($this->_getSavedResponse('OrderCustomFields'));
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
         $customFields = (new Scheme\Order($this->_roistat))->customFields();
         $this->assertSame(['Город', 'Касса', 'Менеджер'], $customFields);
     }
@@ -67,7 +67,7 @@ class OrderTest extends AbstractTest {
      */
     public function testStatusUpdate() {
         $handler = $this->_createMockResponse(['status' => 'success']);
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
         $response = (new Scheme\Order($this->_roistat))->statusUpdate('123', '1');
         $this->assertTrue($response);
     }
@@ -78,7 +78,7 @@ class OrderTest extends AbstractTest {
      */
     public function testDelete() {
         $handler = $this->_createMockResponse(['status' => 'success']);
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
         $response = (new Scheme\Order($this->_roistat))->delete('1');
         $this->assertTrue($response);
     }

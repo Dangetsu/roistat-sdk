@@ -15,7 +15,7 @@ class CounterTest extends AbstractTest {
      */
     public function testGet() {
         $handler = $this->_createMockResponse(['data' => [['id' => '213214', 'code' => '<script>counter</script>']]]);
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
         $counter = (new Scheme\Counter($this->_roistat))->get();
         $this->assertNotNull($counter);
     }

@@ -16,7 +16,7 @@ class StatusTest extends AbstractTest {
      */
     public function testCreate() {
         $handler = $this->_createMockResponse(['status' => 'success']);
-        $this->_roistat->addMockHandler($handler);
+        $this->_roistat->api()->addMockHandler($handler);
 
         $request = [
             (new Entity\Status())->setId('1')->setName('Новый лид')->setType('in_progress'),
