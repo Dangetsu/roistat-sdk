@@ -9,7 +9,7 @@ use Analytics\Scheme;
 use Analytics\Engine\Exception;
 use Analytics\Entity\Calltracking\Script;
 
-class ScriptTestTest extends \Test\AbstractTest {
+class ScriptTest extends \Test\AbstractTest {
     /**
      * @throws Exception\AuthException
      * @throws Exception\BasicException

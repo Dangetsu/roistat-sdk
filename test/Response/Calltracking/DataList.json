@@ -1,0 +1,131 @@
+{
+  "data": {
+    "period": {
+      "startDate": "2016-06-30T21:00:00+0000",
+      "endDate": "2016-10-31T20:59:59+0000"
+    },
+    "hourlyWeeklyQuantity": {
+      "byHours": [
+        {
+          "success": 0,
+          "missed": 0,
+          "hour": "01"
+        },
+        {
+          "success": 0,
+          "missed": 0,
+          "hour": "02"
+        }
+      ],
+      "byWeekdays": [
+        {
+          "success": 0,
+          "missed": 0,
+          "date": "2016-10-30T00:00:00+0000"
+        },
+        {
+          "success": 0,
+          "missed": 0,
+          "date": "2016-10-31T00:00:00+0000"
+        }
+      ],
+      "total": 39
+    },
+    "dailyDuration": {
+      "values": [
+        {
+          "value": 0,
+          "date": "2016-10-30T00:00:00+0000"
+        },
+        {
+          "value": 0,
+          "date": "2016-10-31T00:00:00+0000"
+        }
+      ],
+      "average": 0.23418803418803
+    },
+    "dailyQuantity": {
+      "values": [
+        {
+          "value": 0,
+          "date": "2016-10-30T00:00:00+0000"
+        },
+        {
+          "value": 0,
+          "date": "2016-10-31T00:00:00+0000"
+        }
+      ],
+      "average": 0.31451612903226
+    },
+    "markerQuantity": [
+      {
+        "displayName": "Прямые визиты",
+        "value": 17,
+        "systemName": ""
+      },
+      {
+        "displayName": "Визиты с сайтов",
+        "value": 3,
+        "systemName": "site"
+      },
+      {
+        "displayName": "yandex",
+        "value": 2,
+        "systemName": "yandex"
+      },
+      {
+        "displayName": "Остальные",
+        "value": 17,
+        "systemName": "Others"
+      }
+    ],
+    "markerDuration": [
+      {
+        "displayName": "yandex",
+        "iconUrl": "",
+        "value": 7.5,
+        "systemName": "yandex"
+      },
+      {
+        "displayName": "Прямые визиты",
+        "iconUrl": "https://cloud.roistat.com/img/arrow-right.png",
+        "value": 10.235294117647,
+        "systemName": ""
+      },
+      {
+        "displayName": "Визиты с сайтов",
+        "iconUrl": "https://cloud.roistat.com/img/globe.png",
+        "value": 24,
+        "systemName": "site"
+      }
+    ],
+    "regionQuantity": [
+      {
+        "value": 21,
+        "displayName": "Москва"
+      },
+      {
+        "value": 1,
+        "displayName": "Санкт-Петербург"
+      },
+      {
+        "value": 17,
+        "displayName": "Остальные"
+      }
+    ],
+    "callCost": {
+      "values": [
+        {
+          "value": 0,
+          "date": "2016-10-30T00:00:00+0000"
+        },
+        {
+          "value": 0,
+          "date": "2016-10-31T00:00:00+0000"
+        }
+      ],
+      "average": 80.725774193548
+    }
+  },
+  "status": "success"
+}

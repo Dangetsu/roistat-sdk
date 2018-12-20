@@ -32,8 +32,8 @@ abstract class AbstractEntity implements \JsonSerializable {
     public function __call($name, $arguments) {
         if (preg_match('/^(get|set)(.+)/', $name,$match)) {
             $methodType = $match[1];
-            $propertyName = mb_strtolower(preg_replace('/\B[A-Z]/', '_$0', $match[2]));
-            if (!property_exists($this, $propertyName)) {
+            $propertyName = $this->_getPropertyName($match[2]);
+            if ($propertyName === null) {
                 return false;
             }
 
@@ -83,6 +83,22 @@ abstract class AbstractEntity implements \JsonSerializable {
             $result[$name] = $value;
         }
         return $result;
+    }
+
+    /**
+     * @param string $checkName
+     * @return string
+     */
+    private function _getPropertyName($checkName) {
+        $camelCasePropertyName = lcfirst($checkName);
+        if (property_exists($this, $camelCasePropertyName)) {
+            return $camelCasePropertyName;
+        }
+        $propertyName = mb_strtolower(preg_replace('/\B[A-Z]/', '_$0', $checkName));
+        if (property_exists($this, $propertyName)) {
+            return $propertyName;
+        }
+        return null;
     }
 
     /**
