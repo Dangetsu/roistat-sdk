@@ -13,10 +13,15 @@ use Analytics\Entity;
  * @method int getTotal()
  */
 class HourlyWeeklyQuantity extends Entity\AbstractEntity {
+    /** @var array */
+    protected $_entityFields = [
+        'byHours' => 'HourlyWeeklyQuantity\\ByHours[]',
+        'byWeekdays' => 'HourlyWeeklyQuantity\\ByWeekdays[]',
+    ];
     /** @var HourlyWeeklyQuantity\ByHours[] */
-    protected $byHours = 'HourlyWeeklyQuantity\\ByHours[]';
+    protected $byHours;
     /** @var HourlyWeeklyQuantity\ByWeekdays[] */
-    protected $byWeekdays = 'HourlyWeeklyQuantity\\ByWeekdays[]';
+    protected $byWeekdays;
     /** @var int */
     protected $total;
 }

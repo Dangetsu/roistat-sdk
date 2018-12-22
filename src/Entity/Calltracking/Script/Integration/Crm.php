@@ -14,8 +14,12 @@ use Analytics\Entity;
  * @method self setCustomFields(Crm\CustomFields[] $customFields)
  */
 class Crm extends Entity\AbstractEntity {
+    /** @var array */
+    protected $_entityFields = [
+        'custom_fields' => 'Crm\\CustomFields[]',
+    ];
     /** @var int */
     protected $enabled;
     /** @var Crm\CustomFields[] */
-    protected $custom_fields = 'Crm\\CustomFields[]';
+    protected $custom_fields;
 }

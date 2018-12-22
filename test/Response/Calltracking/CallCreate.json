@@ -1,0 +1,17 @@
+{
+  "phoneCall": {
+    "id": "5",
+    "callee": "7495301234",
+    "caller": "7495301234",
+    "visit_id": "666",
+    "marker": "ym_1_2",
+    "order_id": "777",
+    "duration": 59,
+    "status": "ANSWER",
+    "google_client_id": null,
+    "date": "2016-06-19T09:31:01+0000",
+    "comment": "Перезвонить завтра",
+    "answer_duration": 29
+  },
+  "status": "success"
+}

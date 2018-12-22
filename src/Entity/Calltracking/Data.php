@@ -18,20 +18,31 @@ use Analytics\Entity;
  * @method Data\CallCost getCallCost()
  */
 class Data extends Entity\AbstractEntity {
+    /** @var array */
+    protected $_entityFields = [
+        'period'               => 'Data\\Period',
+        'hourlyWeeklyQuantity' => 'Data\\HourlyWeeklyQuantity',
+        'dailyDuration'        => 'Data\\DailyDuration',
+        'dailyQuantity'        => 'Data\\DailyQuantity',
+        'markerQuantity'       => 'Data\\MarkerQuantity[]',
+        'markerDuration'       => 'Data\\MarkerDuration[]',
+        'regionQuantity'       => 'Data\\RegionQuantity[]',
+        'callCost'             => 'Data\\CallCost',
+    ];
     /** @var Data\Period */
-    protected $period = 'Data\\Period';
+    protected $period;
     /** @var Data\HourlyWeeklyQuantity */
-    protected $hourlyWeeklyQuantity = 'Data\\HourlyWeeklyQuantity';
+    protected $hourlyWeeklyQuantity;
     /** @var Data\DailyDuration */
-    protected $dailyDuration = 'Data\\DailyDuration';
+    protected $dailyDuration;
     /** @var Data\DailyQuantity */
-    protected $dailyQuantity = 'Data\\DailyQuantity';
+    protected $dailyQuantity;
     /** @var Data\MarkerQuantity[] */
-    protected $markerQuantity = 'Data\\MarkerQuantity[]';
+    protected $markerQuantity;
     /** @var Data\MarkerDuration[] */
-    protected $markerDuration = 'Data\\MarkerDuration[]';
+    protected $markerDuration;
     /** @var Data\RegionQuantity[] */
-    protected $regionQuantity = 'Data\\RegionQuantity[]';
+    protected $regionQuantity;
     /** @var Data\CallCost */
-    protected $callCost = 'Data\\CallCost';
+    protected $callCost;
 }

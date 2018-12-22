@@ -22,6 +22,11 @@ use Analytics\Scheme;
  * @method string getPage()
  */
 class Order extends AbstractEntity {
+    /** @var array */
+    protected $_entityFields = [
+        'status' => 'Status',
+        'visit'  => 'Visit',
+    ];
     /** @var Scheme\Order */
     protected $_scheme;
     /** @var string */
@@ -43,9 +48,9 @@ class Order extends AbstractEntity {
     /** @var array */
     protected $custom_fields;
     /** @var Status */
-    protected $status = 'Status';
+    protected $status;
     /** @var Visit */
-    protected $visit = 'Visit';
+    protected $visit;
     /** @var string */
     protected $page;
 }

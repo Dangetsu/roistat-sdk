@@ -16,6 +16,8 @@ abstract class AbstractEntity implements \JsonSerializable {
     protected $id;
     /** @var Scheme\AbstractScheme */
     protected $_scheme;
+    /** @var array */
+    protected $_entityFields = [];
 
     /**
      * @param Scheme\AbstractScheme $scheme
@@ -53,10 +55,10 @@ abstract class AbstractEntity implements \JsonSerializable {
     public function load(array $data = []) {
         $names = array_keys(get_object_vars($this));
         foreach ($names as $name) {
-            if (!array_key_exists($name, $data)) {
+            if (!array_key_exists($name, $data) || $data[$name] === null) {
                 continue;
             }
-            if ($this->$name !== null) {
+            if (array_key_exists($name, $this->_entityFields)) {
                 $this->$name = $this->_loadEntityWithCheckRecursive($data, $name);
                 continue;
             }
@@ -107,17 +109,31 @@ abstract class AbstractEntity implements \JsonSerializable {
      * @return AbstractEntity|AbstractEntity[]
      */
     private function _loadEntityWithCheckRecursive(array $data, $name) {
-        $namespace = substr(get_class($this), 0, strrpos(get_class($this), '\\'));
-        $entityName = str_replace('[]', '', $this->$name);
-        if (mb_strpos($this->$name, '[]') === false) {
-            return $this->_loadEntity("{$namespace}\\{$entityName}", $data[$name]);
+        $entityNamespace = $this->_getEntityClassName($name);
+        if (mb_strpos($this->_entityFields[$name], '[]') === false) {
+            return $this->_loadEntity($entityNamespace, $data[$name]);
         }
 
         $result = [];
         foreach ($data[$name] as $datum) {
-            $result[] = $this->_loadEntity("{$namespace}\\{$entityName}", $datum);
+            $result[] = $this->_loadEntity($entityNamespace, $datum);
         }
         return $result;
+    }
+
+    private function _getEntityClassName($name) {
+        $namespace = substr(get_class($this), 0, strrpos(get_class($this), '\\'));
+        if (preg_match_all('/\\.\\.\\\/', $this->_entityFields[$name], $matches)) {
+            foreach ($matches[0] as $match) {
+                $namespace = $this->_deleteLastNamespaceFolder($namespace);
+            }
+        }
+        $entityName = str_replace(['[]', '..\\'], '', $this->_entityFields[$name]);
+        return "{$namespace}\\{$entityName}";
+    }
+
+    private function _deleteLastNamespaceFolder($namespace) {
+        return preg_replace('/(\\\[a-zA-Z]+)$/', '', $namespace);
     }
 
     /**

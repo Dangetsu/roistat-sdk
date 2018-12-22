@@ -12,8 +12,12 @@ use Analytics\Entity;
  * @method float getAverage()
  */
 class DailyQuantity extends Entity\AbstractEntity {
+    /** @var array */
+    protected $_entityFields = [
+        'values' => 'DailyQuantity\\Value[]',
+    ];
     /** @var DailyQuantity\Value[] */
-    protected $values = 'DailyQuantity\\Value[]';
+    protected $values;
     /** @var float */
     protected $average;
 }

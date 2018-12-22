@@ -22,6 +22,10 @@ use Analytics\Entity;
  * @method self setRedirect(Options\Redirect $redirect)
  */
 class Options extends Entity\AbstractEntity {
+    /** @var array */
+    protected $_entityFields = [
+        'redirect' => 'Options\\Redirect',
+    ];
     /** @var string */
     protected $calltracking_type;
     /** @var string */
@@ -31,7 +35,7 @@ class Options extends Entity\AbstractEntity {
     /** @var string */
     protected $phone_format;
     /** @var Options\Redirect */
-    protected $redirect = 'Options\\Redirect';
+    protected $redirect;
     /** @var array */
     protected $segments;
     /** @var int */

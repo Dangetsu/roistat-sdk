@@ -1,0 +1,91 @@
+{
+  "data": [
+    {
+      "id": "16769",
+      "callee": "7495301234",
+      "caller": "7495751234",
+      "duration": 59,
+      "waiting_time": 30,
+      "answer_duration": 29,
+      "status": "ANSWER",
+      "date": "2016-06-19T09:31:01+0000",
+      "link": "https://site.ru/calltracking/call/23/file/123456qwerty",
+      "visit_id": "666",
+      "order_id": "777",
+      "static_source": {
+        "system_name": "direct_search_18000022_2014432344_что такое гугл адвордс",
+        "display_name": "Яндекс.Директ_Поиск_РК - adwords2 - поиск - Мир_Тратите деньги в Адвордс впустую?_что такое гугл адвордс",
+        "icon_url": "https://favicon.yandex.net/favicon/direct.yandex.ru",
+        "utm_source": "direct",
+        "utm_medium": "cpc",
+        "utm_campaign": "kampaniya",
+        "utm_term": "slovo",
+        "utm_content": "test-message",
+        "openstat": "openstat",
+        "referrer": "http://site.ru/contact.php"
+      },
+      "visit": {
+        "id": "666",
+        "first_id": "660",
+        "date": "2016-05-25T19:31:58+0000",
+        "referrer": "http://site.ru/contact.php",
+        "host": "site.ru",
+        "landing_page": "http://test.ru/lp",
+        "agent": "Mozilla/5.0",
+        "ip": "47.110.126.72",
+        "google_client_id": "1818132860.1451606703",
+        "source": {
+          "system_name": "direct_search_18000022_2014432344_что такое гугл адвордс",
+          "display_name": "Яндекс.Директ_Поиск_РК - adwords2 - поиск - Мир_Тратите деньги в Адвордс впустую?_что такое гугл адвордс",
+          "icon_url": "https://favicon.yandex.net/favicon/direct.yandex.ru",
+          "utm_source": "direct",
+          "utm_medium": "cpc",
+          "utm_campaign": "kampaniya",
+          "utm_term": "slovo",
+          "utm_content": "test-message",
+          "openstat": "openstat",
+          "referrer": "http://site.ru/contact.php"
+        }
+      },
+      "order": {
+        "id": "777",
+        "url": "http://site.ru/order/777",
+        "source_type": "calltracking",
+        "creation_date": "2016-05-22T19:32:22+0000",
+        "update_date": "2016-05-22T19:32:22+0000",
+        "revenue": 2000,
+        "cost": 350,
+        "client_id": 150,
+        "visit_id": 666,
+        "page": null,
+        "status": {
+          "id": 31,
+          "type": "paid",
+          "name": "Оплачен"
+        },
+        "custom_fields": {
+          "Тип лида": "Телефон",
+          "Дизайнер": "Артем Лебедев"
+        }
+      }
+    },
+    {
+      "id": "16768",
+      "callee": "7495301234",
+      "caller": "7495751234",
+      "duration": 47,
+      "waiting_time": 15,
+      "answer_duration": 32,
+      "status": "ANSWER",
+      "date": "2016-06-18T09:58:54+0000",
+      "link": "https://site.ru/calltracking/call/22/file/123456qwerty",
+      "visit_id": "4017325",
+      "order_id": null,
+      "static_source": null,
+      "visit": null,
+      "order": null
+    }
+  ],
+  "total": 2,
+  "status": "success"
+}

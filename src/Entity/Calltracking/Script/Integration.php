@@ -20,14 +20,21 @@ use Analytics\Entity;
  * @method self setGoogleAnalytics(Integration\GoogleAnalytics $analytics)
  */
 class Integration extends Entity\AbstractEntity {
+    /** @var array */
+    protected $_entityFields = [
+        'crm'              => 'Integration\\Crm',
+        'webhook'          => 'Integration\\Webhook',
+        'google_analytics' => 'Integration\\GoogleAnalytics',
+        'webhook_start'    => 'Integration\\Webhook',
+    ];
     /** @var string */
     protected $is_lead_auto_create;
     /** @var Integration\Crm */
-    protected $crm = 'Integration\\Crm';
+    protected $crm;
     /** @var Integration\Webhook */
-    protected $webhook = 'Integration\\Webhook';
+    protected $webhook;
     /** @var Integration\GoogleAnalytics */
-    protected $google_analytics = 'Integration\\GoogleAnalytics';
+    protected $google_analytics;
     /** @var Integration\Webhook */
-    protected $webhook_start = 'Integration\\Webhook';
+    protected $webhook_start;
 }

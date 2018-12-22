@@ -25,6 +25,11 @@ use Analytics\Engine\Exception;
  * @method Script setIntegration(Script\Integration $integration)
  */
 class Script extends Entity\AbstractEntity {
+    /** @var array */
+    protected $_entityFields = [
+        'options'     => 'Script\\Options',
+        'integration' => 'Script\\Integration',
+    ];
     /** @var Scheme\Calltracking\Script */
     protected $_scheme;
     /** @var string */
@@ -38,9 +43,9 @@ class Script extends Entity\AbstractEntity {
     /** @var int */
     protected $accuracy;
     /** @var Script\Options */
-    protected $options = 'Script\\Options';
+    protected $options;
     /** @var Script\Integration */
-    protected $integration = 'Script\\Integration';
+    protected $integration;
     /** @var int */
     protected $needed_phone_count;
 
