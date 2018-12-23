@@ -1,5 +1,5 @@
 {
-    "name": "Dangetsu/roistat-sdk",
+    "name": "dangetsu/roistat-sdk",
     "type": "library",
     "description": "Library for easy work with Roistat API v1",
     "keywords": ["roistat","sdk","library"],
