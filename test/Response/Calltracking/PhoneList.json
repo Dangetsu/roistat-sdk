@@ -1,0 +1,67 @@
+{
+  "data": [
+    {
+      "id": 4,
+      "phone": "74951234567",
+      "prefix": "7495",
+      "script_id": 10,
+      "is_external": 0,
+      "last_use_date": "2016-10-10T08:50:44+0000",
+      "call_count": 0,
+      "creation_date": "2016-10-10T08:50:44+0000",
+      "script": {
+        "id": 10,
+        "name": "Оффлайн реклама",
+        "creation_date": "2016-08-23T10:23:37+0000",
+        "is_enabled": 0,
+        "call_count": 0,
+        "accuracy": 100,
+        "options": {
+          "calltracking_type": "static",
+          "static_source": "оффлайн",
+          "css_selector": [
+            "#track"
+          ],
+          "phone_format": "8 (XXX) XXX-XX-XX",
+          "redirect": {
+            "type": "sip",
+            "value": "example@domain.ru",
+            "sip_trunk_postfix": null
+          },
+          "segments": null,
+          "target_call_time": 0
+        },
+        "integration": {
+          "is_lead_auto_create": "1",
+          "crm": {
+            "enabled": 0,
+            "custom_fields": []
+          },
+          "webhook": {
+            "url": ""
+          },
+          "google_analytics": {
+            "tracking_id": "",
+            "action": "call",
+            "category": "phone",
+            "label": "roistat"
+          }
+        },
+        "needed_phone_count": null
+      }
+    },
+    {
+      "id": 5,
+      "phone": "74991234567",
+      "prefix": null,
+      "script_id": null,
+      "is_external": 1,
+      "last_use_date": null,
+      "call_count": 0,
+      "creation_date": "2016-10-12T08:19:23+0000",
+      "script": null
+    }
+  ],
+  "total": 2,
+  "status": "success"
+}
