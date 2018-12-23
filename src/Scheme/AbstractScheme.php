@@ -34,7 +34,11 @@ abstract class AbstractScheme {
      * @throws Exception\AuthException
      * @throws Exception\BasicException
      */
-    protected function _loadItems($method, Engine\Query $query, $itemsKey) {
+    protected function _loadItems($method, $query, $itemsKey) {
+        if ($query === null) {
+            $query = new Engine\Query();
+        }
+
         $result = [];
         for ($page = 1; $page <= self::MAX_PAGE_COUNT; $page++) {
             $response = $this->_base->api()->send($method, $query, Engine\Api::METHOD_POST);

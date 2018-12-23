@@ -21,9 +21,6 @@ class Phone extends Scheme\AbstractScheme {
      * @throws Exception\BasicException
      */
     public function items(Engine\Query $query = null) {
-        if ($query === null) {
-            $query = new Engine\Query();
-        }
         $items = $this->_loadItems('project/calltracking/phone/list', $query, 'data');
         return $this->_buildEntity($items);
     }

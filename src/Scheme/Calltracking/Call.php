@@ -21,9 +21,6 @@ class Call extends Scheme\AbstractScheme {
      * @throws Exception\BasicException
      */
     public function items(Engine\Query $query = null) {
-        if ($query === null) {
-            $query = new Engine\Query();
-        }
         $items = $this->_loadItems('project/calltracking/call/list', $query, 'data');
         return $this->_buildEntity($items);
     }
@@ -48,14 +45,5 @@ class Call extends Scheme\AbstractScheme {
     public function update(Calltracking\Call $call) {
         $response = $this->_base->api()->send('project/calltracking/call/update', $call, Engine\Api::METHOD_POST);
         return $response['status'] === 'success' ? true : false;
-    }
-
-    /**
-     * todo: rework API for get content and do this
-     * @param int $callId
-     */
-    public function file($callId) {
-        //$response = $this->_base->api()->send("project/calltracking/call/{$callId}/file", [], Engine\Api::METHOD_POST);
-        //return $response;
     }
 }

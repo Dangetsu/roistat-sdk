@@ -20,9 +20,6 @@ class Visit extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function items(Engine\Query $query = null) {
-        if ($query === null) {
-            $query = new Engine\Query();
-        }
         $items = $this->_loadItems('project/site/visit/list', $query, 'data');
         return $this->_buildEntity($items);
     }

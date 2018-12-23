@@ -20,9 +20,6 @@ class Client extends AbstractScheme {
      * @throws Exception\BasicException
      */
     public function items(Engine\Query $query = null) {
-        if ($query === null) {
-            $query = new Engine\Query();
-        }
         $items = $this->_loadItems('project/clients', $query, 'clients');
         return $this->_buildEntity($items);
     }
