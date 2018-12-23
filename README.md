@@ -68,3 +68,57 @@ $call = $callScheme->create($call);
 ```
 
 Ознакомиться более подробно с использованием библиотеки можно изучив код в папке **test**
+
+## Соотношение методов и схем
+
+##### Проекты
+* **/user/projects** - (Scheme\Project())->items()
+* **/user/project/create** - (Scheme\Project())->create()
+* **/project/settings/counter/list** - (Scheme\Counter())->get()
+##### Визиты
+* **/project/site/visit/list** - (Scheme\Visit())->items(Engine\Query)
+##### Клиенты
+* **/project/clients/import** - (Scheme\Client())->create(Entity\Client[])
+* **/project/clients** - (Scheme\Client())->items(Engine\Query)
+##### Заказы
+* **/project/integration/order/list** - (Scheme\Order())->items(Engine\Query)
+* **/project/add-orders** - (Scheme\OrderAdd())->create(Entity\OrderAdd[])
+* **/project/orders/{orderId}/external-url** - (Scheme\Order())->externalUrl(string $orderId)
+* **/project/set-statuses** - (Scheme\Status())->create(Entity\Status[])
+* **/project/analytics/order-custom-fields** - (Scheme\Order())->customFields()
+* **/project/integration/order/{orderId}/status/update** - (Scheme\Order())->statusUpdate(string $orderId, string $statusId)
+* **/project/integration/order/{orderId}/delete** - (Scheme\Order())->delete(string $orderId)
+##### Проксилиды
+* **/project/proxy-leads** - (Scheme\Proxylead())->items()
+* **/project/proxy-leads/{proxyLeadId}** - (Scheme\Proxylead())->get(string $leadId)
+##### Коллтрекинг
+* **/project/calltracking/script/create** - (Scheme\Calltracking\Script())->create(Entity\Calltracking\Script)
+* **/project/calltracking/script/list** - (Scheme\Calltracking\Script())->items(Engine\Query)
+* **/project/calltracking/script/delete** - (Scheme\Calltracking\Script())->delete(int $scriptId)
+* **/project/calltracking/script/update** - (Scheme\Calltracking\Script())->update(Entity\Calltracking\Script)
+* **/project/calltracking/data** - (Scheme\Calltracking\Data())->items(DateTime $from, DateTime $to)
+* **/project/calltracking/call/xls/export** - Нет поддержки
+* **/project/calltracking/call/{callId}/file** - Нет поддержки
+* **/project/calltracking/call/update** - (Scheme\Calltracking\Call())->update(Entity\Calltracking\Call)
+* **/project/calltracking/phone/buy** - На очереди
+* **/project/calltracking/phone/update** - На очереди
+* **/project/calltracking/phone/create** - На очереди
+* **/project/calltracking/phone/delete** - На очереди
+* **/project/calltracking/phone/prefix/list** - На очереди
+* **/project/calltracking/phone/list** - (Scheme\Calltracking\Phone())->items(Engine\Query)
+* **/project/calltracking/call/list** - (Scheme\Calltracking\Call())->items(Engine\Query)
+* **/project/phone-call** - (Scheme\Calltracking\Call())->create(Entity\Calltracking\Call)
+##### Рекламные каналы
+* В разработке
+##### Статистика
+* В разработке
+##### Доступ
+* В разработке
+##### Индикаторы проекта
+* В разработке
+##### Смс отчеты
+* В разработке
+##### Аналитика
+* В разработке
+##### Биллинг
+* В разработке
