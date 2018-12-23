@@ -4,7 +4,7 @@
     "description": "Library for easy work with Roistat API v1",
     "keywords": ["roistat","sdk","library"],
     "homepage": "https://github.com/Dangetsu/roistat-sdk",
-    "license": "GNU",
+    "license": "MIT",
     "authors": [
         {
             "name": "Vladislav Alatorcev",
