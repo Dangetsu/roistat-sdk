@@ -1,4 +1,18 @@
 {
+    "name": "Dangetsu/roistat-sdk",
+    "type": "library",
+    "description": "Library for easy work with Roistat API v1",
+    "keywords": ["roistat","sdk","library"],
+    "homepage": "https://github.com/Dangetsu/roistat-sdk",
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "Vladislav Alatorcev",
+            "email": "clannad_forever@mail.ru",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
         "guzzlehttp/guzzle": ">=5.4.0"
