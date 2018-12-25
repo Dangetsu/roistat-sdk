@@ -12,8 +12,11 @@ use Analytics\Entity;
  * @method string getEndDate()
  */
 class Period extends Entity\AbstractEntity {
+
     /** @var string */
     protected $startDate;
+
     /** @var string */
     protected $endDate;
+
 }

@@ -12,12 +12,23 @@ use Analytics\Entity;
  * @method float getAverage()
  */
 class CallCost extends Entity\AbstractEntity {
-    /** @var array */
-    protected $_entityFields = [
-        'values' => 'CallCost\\Value[]',
-    ];
+
     /** @var CallCost\Value[] */
     protected $values;
+
     /** @var float */
     protected $average;
+
+    /**
+     * @param string $name
+     * @return array
+     */
+    protected function _getPropertySettings($name) {
+        switch($name) {
+            case 'values':
+                return ['class' => CallCost\Value::getClass(), 'is_multiple' => true];
+                break;
+        }
+        return null;
+    }
 }

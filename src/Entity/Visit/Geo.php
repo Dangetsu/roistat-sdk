@@ -15,14 +15,20 @@ use Analytics\Entity;
  * @method string getCountryIso()
  */
 class Geo extends Entity\AbstractEntity {
+
     /** @var string */
     protected $country;
+
     /** @var string */
     protected $region;
+
     /** @var string */
     protected $city;
+
     /** @var string */
     protected $icon_url;
+
     /** @var string */
     protected $country_iso;
+
 }

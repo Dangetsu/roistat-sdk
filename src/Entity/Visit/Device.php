@@ -14,12 +14,17 @@ use Analytics\Entity;
  * @method string getAgentIcon()
  */
 class Device extends Entity\AbstractEntity {
+
     /** @var string */
     protected $os;
+
     /** @var string */
     protected $os_icon;
+
     /** @var string */
     protected $agent;
+
     /** @var string */
     protected $agent_icon;
+
 }

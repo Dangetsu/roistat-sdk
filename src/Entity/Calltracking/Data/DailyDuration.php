@@ -12,12 +12,23 @@ use Analytics\Entity;
  * @method float getAverage()
  */
 class DailyDuration extends Entity\AbstractEntity {
-    /** @var array */
-    protected $_entityFields = [
-        'values' => 'DailyDuration\\Value[]',
-    ];
+
     /** @var DailyDuration\Value[] */
     protected $values;
+
     /** @var float */
     protected $average;
+
+    /**
+     * @param string $name
+     * @return array
+     */
+    protected function _getPropertySettings($name) {
+        switch($name) {
+            case 'values':
+                return ['class' => DailyDuration\Value::getClass(), 'is_multiple' => true];
+                break;
+        }
+        return null;
+    }
 }

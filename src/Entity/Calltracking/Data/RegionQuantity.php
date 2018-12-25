@@ -12,8 +12,11 @@ use Analytics\Entity;
  * @method int getValue()
  */
 class RegionQuantity extends Entity\AbstractEntity {
+
     /** @var string */
     protected $displayName;
+
     /** @var int */
     protected $value;
+
 }

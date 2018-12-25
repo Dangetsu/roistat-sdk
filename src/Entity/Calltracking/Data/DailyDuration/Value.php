@@ -12,8 +12,11 @@ use Analytics\Entity;
  * @method string getDate()
  */
 class Value extends Entity\AbstractEntity {
+
     /** @var int */
     protected $value;
+
     /** @var string */
     protected $date;
+
 }

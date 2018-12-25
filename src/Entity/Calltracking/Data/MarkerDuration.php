@@ -14,12 +14,17 @@ use Analytics\Entity;
  * @method string getSystemName()
  */
 class MarkerDuration extends Entity\AbstractEntity {
+
     /** @var string */
     protected $displayName;
+
     /** @var string */
     protected $iconUrl;
+
     /** @var float */
     protected $value;
+
     /** @var string */
     protected $systemName;
+
 }

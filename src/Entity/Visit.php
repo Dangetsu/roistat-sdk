@@ -26,46 +26,77 @@ namespace Analytics\Entity;
  * @method array getAbTest()
  */
 class Visit extends AbstractEntity {
-    /** @var array */
-    protected $_entityFields = [
-        'device' => 'Visit\\Device',
-        'source' => 'Visit\\Source',
-        'geo'    => 'Visit\\Geo',
-    ];
+
     /** @var string */
     protected $first_visit_id;
+
     /** @var string */
     protected $date;
+
     /** @var string */
     protected $landing_page;
+
     /** @var string */
     protected $host;
+
     /** @var string */
     protected $google_client_id;
+
     /** @var string */
     protected $metrika_client_id;
+
     /** @var string */
     protected $ip;
+
     /** @var string */
     protected $roistat_param1;
+
     /** @var string */
     protected $roistat_param2;
+
     /** @var string */
     protected $roistat_param3;
+
     /** @var string */
     protected $roistat_param4;
+
     /** @var string */
     protected $roistat_param5;
+
     /** @var Visit\Device */
     protected $device;
+
     /** @var Visit\Source */
     protected $source;
+
     /** @var Visit\Geo */
     protected $geo;
+
     /** @var string[] */
     protected $order_ids;
+
     /** @var int */
     protected $cost;
+
     /** @var array */
     protected $ab_test;
+
+    /**
+     * @param string $name
+     * @return array
+     */
+    protected function _getPropertySettings($name) {
+        switch($name) {
+            case 'device':
+                return ['class' => Visit\Device::getClass(), 'is_multiple' => false];
+                break;
+            case 'source':
+                return ['class' => Visit\Source::getClass(), 'is_multiple' => false];
+                break;
+            case 'geo':
+                return ['class' => Visit\Geo::getClass(), 'is_multiple' => false];
+                break;
+        }
+        return null;
+    }
 }

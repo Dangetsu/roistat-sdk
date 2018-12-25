@@ -7,9 +7,11 @@ namespace Analytics\Entity;
 
 /**
  * @method string getCode()
- * @method self setCode($value)
+ * @method Counter setCode($value)
  */
 class Counter extends AbstractEntity {
+
     /** @var string */
     protected $code;
+
 }

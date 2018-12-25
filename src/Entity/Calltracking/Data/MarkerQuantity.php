@@ -13,10 +13,14 @@ use Analytics\Entity;
  * @method string getSystemName()
  */
 class MarkerQuantity extends Entity\AbstractEntity {
+
     /** @var string */
     protected $displayName;
+
     /** @var int */
     protected $value;
+
     /** @var string */
     protected $systemName;
+
 }

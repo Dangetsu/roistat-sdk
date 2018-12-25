@@ -20,6 +20,13 @@ abstract class AbstractEntity implements \JsonSerializable {
     protected $_entityFields = [];
 
     /**
+     * @return string
+     */
+    public static function getClass() {
+        return get_called_class();
+    }
+
+    /**
      * @param Scheme\AbstractScheme $scheme
      */
     public function __construct($scheme = null) {
@@ -58,11 +65,7 @@ abstract class AbstractEntity implements \JsonSerializable {
             if (!array_key_exists($name, $data) || $data[$name] === null) {
                 continue;
             }
-            if (array_key_exists($name, $this->_entityFields)) {
-                $this->$name = $this->_loadEntityWithCheckRecursive($data, $name);
-                continue;
-            }
-            $this->$name = $data[$name];
+            $this->$name = $this->_importField($data, $name);
         }
         return $this;
     }
@@ -88,6 +91,32 @@ abstract class AbstractEntity implements \JsonSerializable {
     }
 
     /**
+     * @param string $name
+     * @return array
+     */
+    protected function _getPropertySettings($name) {
+        return null;
+    }
+
+    /**
+     * @param array $data
+     * @param string $name
+     * @return mixed
+     */
+    private function _importField(array $data, $name) {
+        $propertySettings = $this->_getPropertySettings($name);
+        if ($propertySettings !== null && $propertySettings['is_multiple']) {
+            return array_map(function ($item) use ($propertySettings) {
+                return $this->_loadEntity($propertySettings['class'], $item);
+            }, $data[$name]);
+        }
+        if ($propertySettings !== null) {
+            return $this->_loadEntity($propertySettings['class'], $data[$name]);
+        }
+        return $data[$name];
+    }
+
+    /**
      * @param string $checkName
      * @return string
      */
@@ -101,39 +130,6 @@ abstract class AbstractEntity implements \JsonSerializable {
             return $propertyName;
         }
         return null;
-    }
-
-    /**
-     * @param array $data
-     * @param string $name
-     * @return AbstractEntity|AbstractEntity[]
-     */
-    private function _loadEntityWithCheckRecursive(array $data, $name) {
-        $entityNamespace = $this->_getEntityClassName($name);
-        if (mb_strpos($this->_entityFields[$name], '[]') === false) {
-            return $this->_loadEntity($entityNamespace, $data[$name]);
-        }
-
-        $result = [];
-        foreach ($data[$name] as $datum) {
-            $result[] = $this->_loadEntity($entityNamespace, $datum);
-        }
-        return $result;
-    }
-
-    private function _getEntityClassName($name) {
-        $namespace = substr(get_class($this), 0, strrpos(get_class($this), '\\'));
-        if (preg_match_all('/\\.\\.\\\/', $this->_entityFields[$name], $matches)) {
-            foreach ($matches[0] as $match) {
-                $namespace = $this->_deleteLastNamespaceFolder($namespace);
-            }
-        }
-        $entityName = str_replace(['[]', '..\\'], '', $this->_entityFields[$name]);
-        return "{$namespace}\\{$entityName}";
-    }
-
-    private function _deleteLastNamespaceFolder($namespace) {
-        return preg_replace('/(\\\[a-zA-Z]+)$/', '', $namespace);
     }
 
     /**

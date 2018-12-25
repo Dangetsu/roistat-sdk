@@ -38,44 +38,55 @@ use Analytics\Engine\Exception;
  * @method Call setLink(string $link)
  */
 class Call extends Entity\AbstractEntity {
-    /** @var array */
-    protected $_entityFields = [
-        'static_source' => '..\\Visit\\Source',
-        'visit'         => '..\\Visit',
-        'order'         => '..\\Order',
-    ];
+
     /** @var Scheme\Calltracking\Call */
     protected $_scheme;
+
     /** @var string */
     protected $callee;
+
     /** @var string */
     protected $caller;
+
     /** @var int */
     protected $duration;
+
     /** @var string */
     protected $status;
+
     /** @var string */
     protected $date;
+
     /** @var string */
     protected $visit_id;
+
     /** @var string */
     protected $order_id;
+
     /** @var Entity\Visit\Source */
     protected $static_source;
+
     /** @var string */
     protected $comment;
+
     /** @var Entity\Visit */
     protected $visit;
+
     /** @var Entity\Order */
     protected $order;
+
     /** @var string */
     protected $link;
+
     /** @var int */
     protected $waiting_time;
+
     /** @var int */
     protected $answer_duration;
+
     /** @var string */
     protected $marker;
+
     /** @var string */
     protected $save_to_crm;
 
@@ -86,5 +97,24 @@ class Call extends Entity\AbstractEntity {
      */
     public function update() {
         return $this->_scheme->update($this);
+    }
+
+    /**
+     * @param string $name
+     * @return array
+     */
+    protected function _getPropertySettings($name) {
+        switch($name) {
+            case 'static_source':
+                return ['class' => Entity\Visit\Source::getClass(), 'is_multiple' => false];
+                break;
+            case 'visit':
+                return ['class' => Entity\Visit::getClass(), 'is_multiple' => false];
+                break;
+            case 'order':
+                return ['class' => Entity\Order::getClass(), 'is_multiple' => false];
+                break;
+        }
+        return null;
     }
 }

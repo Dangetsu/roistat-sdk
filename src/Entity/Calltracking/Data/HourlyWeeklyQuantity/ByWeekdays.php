@@ -13,10 +13,14 @@ use Analytics\Entity;
  * @method string getDate()
  */
 class ByWeekdays extends Entity\AbstractEntity {
+
     /** @var int */
     protected $success;
+
     /** @var int */
     protected $missed;
+
     /** @var string */
     protected $date;
+
 }

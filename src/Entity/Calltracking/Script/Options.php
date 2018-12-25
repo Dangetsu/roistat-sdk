@@ -15,29 +15,45 @@ use Analytics\Entity;
  * @method Options\Redirect getRedirect()
  * @method array getSegments()
  * @method int getTargetCallTime()
- * @method self setCalltrackingType(string $value)
- * @method self setCssSelector(string[] $values)
- * @method self setSegments(array $values)
- * @method self setPhoneFormat(string $value)
- * @method self setRedirect(Options\Redirect $redirect)
+ * @method Options setCalltrackingType(string $value)
+ * @method Options setCssSelector(string[] $values)
+ * @method Options setSegments(array $values)
+ * @method Options setPhoneFormat(string $value)
+ * @method Options setRedirect(Options\Redirect $redirect)
  */
 class Options extends Entity\AbstractEntity {
-    /** @var array */
-    protected $_entityFields = [
-        'redirect' => 'Options\\Redirect',
-    ];
+
     /** @var string */
     protected $calltracking_type;
+
     /** @var string */
     protected $static_source;
+
     /** @var string[] */
     protected $css_selector;
+
     /** @var string */
     protected $phone_format;
+
     /** @var Options\Redirect */
     protected $redirect;
+
     /** @var array */
     protected $segments;
+
     /** @var int */
     protected $target_call_time;
+
+    /**
+     * @param string $name
+     * @return array
+     */
+    protected function _getPropertySettings($name) {
+        switch($name) {
+            case 'redirect':
+                return ['class' => Options\Redirect::getClass(), 'is_multiple' => false];
+                break;
+        }
+        return null;
+    }
 }

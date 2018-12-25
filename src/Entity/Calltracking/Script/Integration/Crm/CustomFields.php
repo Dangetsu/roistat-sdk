@@ -10,12 +10,15 @@ use Analytics\Entity;
 /**
  * @method string getType()
  * @method array getValue()
- * @method self setType(string $value)
- * @method self setValue(string $value)
+ * @method CustomFields setType(string $value)
+ * @method CustomFields setValue(string $value)
  */
 class CustomFields extends Entity\AbstractEntity {
+
     /** @var string */
     protected $type;
+
     /** @var string */
     protected $value;
+
 }

@@ -25,27 +25,31 @@ use Analytics\Engine\Exception;
  * @method Script setIntegration(Script\Integration $integration)
  */
 class Script extends Entity\AbstractEntity {
-    /** @var array */
-    protected $_entityFields = [
-        'options'     => 'Script\\Options',
-        'integration' => 'Script\\Integration',
-    ];
+
     /** @var Scheme\Calltracking\Script */
     protected $_scheme;
+
     /** @var string */
     protected $name;
+
     /** @var string */
     protected $creation_date;
+
     /** @var int */
     protected $is_enabled;
+
     /** @var int */
     protected $call_count;
+
     /** @var int */
     protected $accuracy;
+
     /** @var Script\Options */
     protected $options;
+
     /** @var Script\Integration */
     protected $integration;
+
     /** @var int */
     protected $needed_phone_count;
 
@@ -65,5 +69,21 @@ class Script extends Entity\AbstractEntity {
      */
     public function delete() {
         return $this->_scheme->delete($this->getId());
+    }
+
+    /**
+     * @param string $name
+     * @return array
+     */
+    protected function _getPropertySettings($name) {
+        switch($name) {
+            case 'options':
+                return ['class' => Script\Options::getClass(), 'is_multiple' => false];
+                break;
+            case 'integration':
+                return ['class' => Script\Integration::getClass(), 'is_multiple' => false];
+                break;
+        }
+        return null;
     }
 }

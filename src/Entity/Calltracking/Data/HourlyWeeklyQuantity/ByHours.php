@@ -13,10 +13,14 @@ use Analytics\Entity;
  * @method string getHour()
  */
 class ByHours extends Entity\AbstractEntity {
+
     /** @var int */
     protected $success;
+
     /** @var int */
     protected $missed;
+
     /** @var string */
     protected $hour;
+
 }
