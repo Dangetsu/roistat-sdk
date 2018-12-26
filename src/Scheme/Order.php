@@ -46,7 +46,6 @@ class Order extends AbstractScheme {
     }
 
     /**
-     * todo: call from entity
      * @param string $orderId
      * @param string $statusId
      * @return bool
@@ -59,7 +58,6 @@ class Order extends AbstractScheme {
     }
 
     /**
-     * todo: call from entity
      * @param string $orderId
      * @return bool
      * @throws Exception\AuthException

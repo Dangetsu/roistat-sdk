@@ -16,8 +16,6 @@ abstract class AbstractEntity implements \JsonSerializable {
     protected $id;
     /** @var Scheme\AbstractScheme */
     protected $_scheme;
-    /** @var array */
-    protected $_entityFields = [];
 
     /**
      * @return string

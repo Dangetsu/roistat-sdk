@@ -63,6 +63,24 @@ class Order extends AbstractEntity {
     protected $page;
 
     /**
+     * @return bool
+     * @throws \Analytics\Engine\Exception\AuthException
+     * @throws \Analytics\Engine\Exception\BasicException
+     */
+    public function statusUpdate() {
+        return $this->_scheme->statusUpdate($this->id, $this->status);
+    }
+
+    /**
+     * @return bool
+     * @throws \Analytics\Engine\Exception\AuthException
+     * @throws \Analytics\Engine\Exception\BasicException
+     */
+    public function delete() {
+        return $this->_scheme->delete($this->id);
+    }
+
+    /**
      * @param string $name
      * @return array
      */
