@@ -100,7 +100,7 @@ $call = $callScheme->create($call);
 * **/project/calltracking/call/xls/export** - Нет поддержки
 * **/project/calltracking/call/{callId}/file** - Нет поддержки
 * **/project/calltracking/call/update** - (Scheme\Calltracking\Call())->update(Entity\Calltracking\Call)
-* **/project/calltracking/phone/buy** - На очереди
+* **/project/calltracking/phone/buy** - (Scheme\Calltracking\Phone())->buy(string $prefix, int $count)
 * **/project/calltracking/phone/update** - На очереди
 * **/project/calltracking/phone/create** - На очереди
 * **/project/calltracking/phone/delete** - На очереди
@@ -122,3 +122,7 @@ $call = $callScheme->create($call);
 * В разработке
 ##### Биллинг
 * В разработке
+##### Незадокументированные методы
+* Получение списка статусов(только для новых интеграций) - В разработке
+* Получение списка последних 1000 событий - В разработке
+* Получение списка обратных звонков через Ловца лидов - В разработке
