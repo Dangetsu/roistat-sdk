@@ -11,9 +11,6 @@ use Analytics\Engine\Exception;
 use Analytics\Entity\Calltracking;
 
 class Phone extends Scheme\AbstractScheme {
-    /** @var string */
-    protected $_entityName = 'Calltracking\\Phone';
-
     /**
      * @param Engine\Query $query
      * @return Calltracking\Phone[]
@@ -22,7 +19,7 @@ class Phone extends Scheme\AbstractScheme {
      */
     public function items(Engine\Query $query = null) {
         $items = $this->_loadItems('project/calltracking/phone/list', $query, 'data');
-        return $this->_buildEntity($items);
+        return $this->_buildEntityList($items);
     }
 
     /**
@@ -34,6 +31,13 @@ class Phone extends Scheme\AbstractScheme {
      */
     public function buy($prefix, $count) {
         $response = $this->_base->api()->send('project/calltracking/phone/buy', ['prefix' => $prefix, 'count' => $count], Engine\Api::METHOD_POST);
-        return $this->_buildEntity($response['data']);
+        return $this->_buildEntityList($response['data']);
+    }
+
+    /**
+     * @return string
+     */
+    protected function _getResponseEntityClass() {
+        return Calltracking\Phone::getClass();
     }
 }

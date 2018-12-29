@@ -10,9 +10,6 @@ use Analytics\Engine\Exception;
 use Analytics\Entity;
 
 class Proxylead extends AbstractScheme {
-    /** @var string */
-    protected $_entityName = 'Proxylead';
-
     /**
      * @param \DateTime $periodFrom
      * @param \DateTime $periodTo
@@ -22,7 +19,7 @@ class Proxylead extends AbstractScheme {
      */
     public function items(\DateTime $periodFrom, \DateTime $periodTo) {
         $response = $this->_base->api()->send('project/proxy-leads', ['period' => "{$periodFrom->format('Y-m-d')}-{$periodTo->format('Y-m-d')}"]);
-        return $this->_buildEntity($response['ProxyLeads']);
+        return $this->_buildEntityList($response['ProxyLeads']);
     }
 
     /**
@@ -33,6 +30,13 @@ class Proxylead extends AbstractScheme {
      */
     public function get($proxyleadId) {
         $response = $this->_base->api()->send("project/proxy-leads/{$proxyleadId}");
-        return (new Entity\Proxylead())->load($response['ProxyLead']);
+        return $this->_buildEntity($response['ProxyLead']);
+    }
+
+    /**
+     * @return string
+     */
+    protected function _getResponseEntityClass() {
+        return Entity\Proxylead::getClass();
     }
 }

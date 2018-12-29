@@ -10,9 +10,6 @@ use Analytics\Engine\Exception;
 use Analytics\Entity;
 
 class Order extends AbstractScheme {
-    /** @var string */
-    protected $_entityName = 'Order';
-
     /**
      * @param Engine\Query $query
      * @return Entity\Order[]
@@ -21,7 +18,7 @@ class Order extends AbstractScheme {
      */
     public function items(Engine\Query $query = null) {
         $items = $this->_loadItems('project/integration/order/list', $query, 'data');
-        return $this->_buildEntity($items);
+        return $this->_buildEntityList($items);
     }
 
     /**
@@ -66,5 +63,12 @@ class Order extends AbstractScheme {
     public function delete($orderId) {
         $response = $this->_base->api()->send("project/integration/order/{$orderId}/delete", [],Engine\Api::METHOD_POST);
         return $response['status'] === 'success' ? true : false;
+    }
+
+    /**
+     * @return string
+     */
+    protected function _getResponseEntityClass() {
+        return Entity\Order::getClass();
     }
 }

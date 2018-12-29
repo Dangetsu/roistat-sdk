@@ -11,9 +11,6 @@ use Analytics\Engine\Exception;
 use Analytics\Entity\Calltracking;
 
 class Script extends Scheme\AbstractScheme {
-    /** @var string */
-    protected $_entityName = 'Calltracking\\Script';
-
     /**
      * @param Engine\Query $query
      * @return Calltracking\Script[]
@@ -22,7 +19,7 @@ class Script extends Scheme\AbstractScheme {
      */
     public function items(Engine\Query $query = null) {
         $items = $this->_loadItems('project/calltracking/script/list', $query, 'data');
-        return $this->_buildEntity($items);
+        return $this->_buildEntityList($items);
     }
 
     /**
@@ -33,7 +30,7 @@ class Script extends Scheme\AbstractScheme {
      */
     public function create(Calltracking\Script $script) {
         $response = $this->_base->api()->send('project/calltracking/script/create', $script, Engine\Api::METHOD_POST);
-        return (new Calltracking\Script())->load($response['data']);
+        return $this->_buildEntity($response['data']);
     }
 
     /**
@@ -56,5 +53,12 @@ class Script extends Scheme\AbstractScheme {
     public function delete($id) {
         $response = $this->_base->api()->send('project/calltracking/script/delete', ['id' => $id], Engine\Api::METHOD_POST);
         return $response['status'] === 'success' ? true : false;
+    }
+
+    /**
+     * @return string
+     */
+    protected function _getResponseEntityClass() {
+        return Calltracking\Script::getClass();
     }
 }

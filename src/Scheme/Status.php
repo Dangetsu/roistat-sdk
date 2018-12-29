@@ -20,4 +20,11 @@ class Status extends AbstractScheme {
         $response = $this->_base->api()->send('project/set-statuses', $statuses, Engine\Api::METHOD_POST);
         return $response['status'] === 'success' ? true : false;
     }
+
+    /**
+     * @return string
+     */
+    protected function _getResponseEntityClass() {
+        return null;
+    }
 }

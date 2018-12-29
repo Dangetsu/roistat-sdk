@@ -11,9 +11,6 @@ use Analytics\Engine\Exception;
 use Analytics\Entity\Calltracking;
 
 class Call extends Scheme\AbstractScheme {
-    /** @var string */
-    protected $_entityName = 'Calltracking\\Call';
-
     /**
      * @param Engine\Query $query
      * @return Calltracking\Call[]
@@ -22,7 +19,7 @@ class Call extends Scheme\AbstractScheme {
      */
     public function items(Engine\Query $query = null) {
         $items = $this->_loadItems('project/calltracking/call/list', $query, 'data');
-        return $this->_buildEntity($items);
+        return $this->_buildEntityList($items);
     }
 
     /**
@@ -45,5 +42,12 @@ class Call extends Scheme\AbstractScheme {
     public function update(Calltracking\Call $call) {
         $response = $this->_base->api()->send('project/calltracking/call/update', $call, Engine\Api::METHOD_POST);
         return $response['status'] === 'success' ? true : false;
+    }
+
+    /**
+     * @return string
+     */
+    protected function _getResponseEntityClass() {
+        return Calltracking\Call::getClass();
     }
 }

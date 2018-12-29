@@ -13,8 +13,6 @@ use Analytics\Entity;
 abstract class AbstractScheme {
     const MAX_PAGE_COUNT = 800;
 
-    /** @var string */
-    protected $_entityName;
     /** @var Analytics\Roistat */
     protected $_base;
 
@@ -25,6 +23,11 @@ abstract class AbstractScheme {
     public function __construct(Analytics\Roistat $base) {
         $this->_base = $base;
     }
+
+    /**
+     * @return string
+     */
+    abstract protected function _getResponseEntityClass();
 
     /**
      * @param string $method
@@ -59,15 +62,30 @@ abstract class AbstractScheme {
 
     /**
      * @param array $items
+     * @param string $className
      * @return mixed
      */
-    protected function _buildEntity(array $items) {
-        $class_name = "Analytics\\Entity\\{$this->_entityName}";
-        return array_map(function ($item) use ($class_name) {
-            /** @var Entity\AbstractEntity $entity */
-            $entity = new $class_name($this);
-            $entity->load($item);
-            return $entity;
+    protected function _buildEntityList(array $items, $className = null) {
+        if ($className === null) {
+            $className = $this->_getResponseEntityClass();
+        }
+        return array_map(function ($item) use ($className) {
+            return $this->_buildEntity($item, $className);
         }, $items);
+    }
+
+    /**
+     * @param array $item
+     * @param string $className
+     * @return mixed
+     */
+    protected function _buildEntity(array $item, $className = null) {
+        if ($className === null) {
+            $className = $this->_getResponseEntityClass();
+        }
+        /** @var Entity\AbstractEntity $entity */
+        $entity = new $className($this);
+        $entity->load($item);
+        return $entity;
     }
 }

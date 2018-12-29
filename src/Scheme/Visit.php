@@ -10,9 +10,6 @@ use Analytics\Engine\Exception;
 use Analytics\Entity;
 
 class Visit extends AbstractScheme {
-    /** @var string */
-    protected $_entityName = 'Visit';
-
     /**
      * @param Engine\Query $query
      * @return Entity\Visit[]
@@ -21,6 +18,13 @@ class Visit extends AbstractScheme {
      */
     public function items(Engine\Query $query = null) {
         $items = $this->_loadItems('project/site/visit/list', $query, 'data');
-        return $this->_buildEntity($items);
+        return $this->_buildEntityList($items);
+    }
+
+    /**
+     * @return string
+     */
+    protected function _getResponseEntityClass() {
+        return Entity\Visit::getClass();
     }
 }

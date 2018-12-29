@@ -10,9 +10,6 @@ use Analytics\Engine\Exception;
 use Analytics\Entity;
 
 class OrderAdd extends AbstractScheme {
-    /** @var string */
-    protected $_entityName = 'OrderAdd\Response';
-
     /**
      * @param Entity\OrderAdd[] $orders
      * @return Entity\OrderAdd\Response
@@ -21,6 +18,13 @@ class OrderAdd extends AbstractScheme {
      */
     public function create(array $orders) {
         $response = $this->_base->api()->send('project/add-orders', $orders, Engine\Api::METHOD_POST);
-        return (new Entity\OrderAdd\Response())->load($response);
+        return $this->_buildEntity($response);
+    }
+
+    /**
+     * @return string
+     */
+    protected function _getResponseEntityClass() {
+        return Entity\OrderAdd\Response::getClass();
     }
 }

@@ -9,9 +9,6 @@ use Analytics\Engine\Exception;
 use Analytics\Entity;
 
 class Counter extends AbstractScheme {
-    /** @var string */
-    protected $_entityName = 'Counter';
-
     /**
      * @return Entity\Counter
      * @throws Exception\AuthException
@@ -19,7 +16,14 @@ class Counter extends AbstractScheme {
      */
     public function get() {
         $response = $this->_base->api()->send('project/settings/counter/list');
-        $objects = $this->_buildEntity($response['data']);
+        $objects = $this->_buildEntityList($response['data']);
         return count($objects) > 0 ? $objects[0] : null;
+    }
+
+    /**
+     * @return string
+     */
+    protected function _getResponseEntityClass() {
+        return Entity\Counter::getClass();
     }
 }

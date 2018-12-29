@@ -11,9 +11,6 @@ use Analytics\Engine\Exception;
 use Analytics\Entity\Calltracking;
 
 class Data extends Scheme\AbstractScheme {
-    /** @var string */
-    protected $_entityName = 'Calltracking\\Data';
-
     /**
      * @param \DateTime $from
      * @param \DateTime $to
@@ -23,6 +20,13 @@ class Data extends Scheme\AbstractScheme {
      */
     public function items(\DateTime $from, \DateTime $to) {
         $response = $this->_base->api()->send('project/calltracking/data', ['period' => ['from' => $from->format('c'), 'to' => $to->format('c')]], Engine\Api::METHOD_POST);
-        return (new Calltracking\Data())->load($response['data']);
+        return $this->_buildEntity($response['data']);
+    }
+
+    /**
+     * @return string
+     */
+    protected function _getResponseEntityClass() {
+        return Calltracking\Data::getClass();
     }
 }
