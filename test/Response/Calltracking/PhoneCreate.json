@@ -1,0 +1,17 @@
+{
+  "data": [
+    {
+      "id": 5,
+      "phone": "74951234567",
+      "prefix": null,
+      "script_id": null,
+      "is_external": 1,
+      "last_use_date": null,
+      "call_count": 0,
+      "creation_date": "2016-10-12T08:19:23+0000",
+      "script": null
+    }
+  ],
+  "total": 1,
+  "status": "success"
+}

@@ -101,10 +101,10 @@ $call = $callScheme->create($call);
 * **/project/calltracking/call/{callId}/file** - Нет поддержки
 * **/project/calltracking/call/update** - (Scheme\Calltracking\Call())->update(Entity\Calltracking\Call)
 * **/project/calltracking/phone/buy** - (Scheme\Calltracking\Phone())->buy(string $prefix, int $count)
-* **/project/calltracking/phone/update** - На очереди
-* **/project/calltracking/phone/create** - На очереди
-* **/project/calltracking/phone/delete** - На очереди
-* **/project/calltracking/phone/prefix/list** - На очереди
+* **/project/calltracking/phone/update** - (Scheme\Calltracking\Phone())->update(Entity\Calltracking\Phone)
+* **/project/calltracking/phone/create** - (Scheme\Calltracking\Phone())->create(string[] $phones)
+* **/project/calltracking/phone/delete** - (Scheme\Calltracking\Phone())->delete(string[] $phones)
+* **/project/calltracking/phone/prefix/list** - (Scheme\Calltracking\Phone())->allowedPhoneCodes()
 * **/project/calltracking/phone/list** - (Scheme\Calltracking\Phone())->items(Engine\Query)
 * **/project/calltracking/call/list** - (Scheme\Calltracking\Call())->items(Engine\Query)
 * **/project/phone-call** - (Scheme\Calltracking\Call())->create(Entity\Calltracking\Call)

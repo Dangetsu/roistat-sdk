@@ -6,19 +6,25 @@
 namespace Analytics\Entity\Calltracking;
 
 use Analytics\Entity;
+use Analytics\Scheme;
 
 /**
  * @method string getPhone()
  * @method string getPrefix()
- * @method string getScriptId()
+ * @method int getScriptId()
  * @method int getIsExternal()
  * @method string getLastUseDate()
  * @method int getCallCount()
  * @method string getCreationDate()
  * @method Script getScript()
  * @method int getNeededPhoneCount()
+ * @method Phone setLastUseDate(string $date)
+ * @method Phone setScriptId(int $scriptId)
  */
 class Phone extends Entity\AbstractEntity {
+
+    /** @var Scheme\Calltracking\Phone */
+    protected $_scheme;
 
     /** @var string */
     protected $phone;
@@ -26,7 +32,7 @@ class Phone extends Entity\AbstractEntity {
     /** @var string */
     protected $prefix;
 
-    /** @var string */
+    /** @var int */
     protected $script_id;
 
     /** @var int */
@@ -46,6 +52,13 @@ class Phone extends Entity\AbstractEntity {
 
     /** @var int */
     protected $needed_phone_count;
+
+    /**
+     * @return bool
+     */
+    public function delete() {
+        return $this->_scheme->delete([$this->phone]);
+    }
 
     /**
      * @param string $name

@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "system_name": "78362",
+      "display_name": "7 8362",
+      "city": "Йошкар-Ола",
+      "month_price": 750,
+      "minute_price": 1.4
+    },
+    {
+      "system_name": "78422",
+      "display_name": "7 8422",
+      "city": "Ульяновск",
+      "month_price": 750,
+      "minute_price": 1.4
+    }
+  ],
+  "total": 2,
+  "status": "success"
+}

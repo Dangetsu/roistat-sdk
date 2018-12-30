@@ -6,13 +6,10 @@
 namespace Test\Calltracking;
 
 use Analytics\Scheme;
-use Analytics\Engine\Exception;
+use Analytics\Entity;
 
 class PhoneTest extends \Test\AbstractTest {
-    /**
-     * @throws Exception\AuthException
-     * @throws Exception\BasicException
-     */
+
     public function testItems() {
         $this->_roistat->api()->addMockHandler($this->_createMockResponse($this->_getSavedResponse('Calltracking/PhoneList')));
         $phones = (new Scheme\Calltracking\Phone($this->_roistat))->items();
@@ -30,10 +27,6 @@ class PhoneTest extends \Test\AbstractTest {
         $this->assertNotNull($phone->getScript());
     }
 
-    /**
-     * @throws Exception\AuthException
-     * @throws Exception\BasicException
-     */
     public function testBuy() {
         $this->_roistat->api()->addMockHandler($this->_createMockResponse($this->_getSavedResponse('Calltracking/PhoneBuy')));
         $phones = (new Scheme\Calltracking\Phone($this->_roistat))->buy('499', 1);
@@ -49,5 +42,47 @@ class PhoneTest extends \Test\AbstractTest {
         $this->assertNull($phone->getScriptId());
         $this->assertNull($phone->getLastUseDate());
         $this->assertNull($phone->getScript());
+    }
+
+    public function testCreate() {
+        $this->_roistat->api()->addMockHandler($this->_createMockResponse($this->_getSavedResponse('Calltracking/PhoneCreate')));
+        $phones = (new Scheme\Calltracking\Phone($this->_roistat))->create(['74951234567']);
+        $this->assertSame(1, count($phones));
+
+        $phone = $phones[0];
+        $this->assertSame(5, $phone->getId());
+        $this->assertSame('74951234567', $phone->getPhone());
+        $this->assertSame(1, $phone->getIsExternal());
+        $this->assertSame('2016-10-12T08:19:23+0000', $phone->getCreationDate());
+    }
+
+    public function testUpdate() {
+        $this->_roistat->api()->addMockHandler($this->_createMockResponse(['status' => 'success']));
+
+        $phone = (new Entity\Calltracking\Phone())
+            ->setId(5)
+            ->setScriptId(2)
+            ->setLastUseDate('2016-10-11T21:00:00.000Z');
+        $status = (new Scheme\Calltracking\Phone($this->_roistat))->update($phone);
+        $this->assertTrue($status);
+    }
+
+    public function testDelete() {
+        $this->_roistat->api()->addMockHandler($this->_createMockResponse(['status' => 'success']));
+        $status = (new Scheme\Calltracking\Phone($this->_roistat))->delete(['74951234567']);
+        $this->assertTrue($status);
+    }
+
+    public function testPhoneCodes() {
+        $this->_roistat->api()->addMockHandler($this->_createMockResponse($this->_getSavedResponse('Calltracking/PhoneCodes')));
+        $codes = (new Scheme\Calltracking\Phone($this->_roistat))->allowedPhoneCodes();
+        $this->assertCount(2, $codes);
+
+        $code = $codes[0];
+        $this->assertSame('78362', $code->getSystemName());
+        $this->assertSame('7 8362', $code->getDisplayName());
+        $this->assertSame('Йошкар-Ола', $code->getCity());
+        $this->assertSame(750, $code->getMonthPrice());
+        $this->assertSame(1.4, $code->getMinutePrice());
     }
 }
