@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "source": "yandex",
+      "name": "Яндекс",
+      "type": "system",
+      "level": 1,
+      "icon": "http://test.ru/logo.png"
+    },
+    {
+      "source": "yandex_seo",
+      "name": "seo",
+      "type": "custom",
+      "level": 2,
+      "icon": null
+    }
+  ],
+  "total": 2,
+  "status": "success"
+}
