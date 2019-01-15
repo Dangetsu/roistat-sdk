@@ -1,0 +1,11 @@
+[
+  {
+    "id": "123",
+    "source": "yandex_seo_test",
+    "name": "Yandex -> SEO -> Test",
+    "from_date": "2016-07-01",
+    "to_date": "2016-07-31",
+    "timezone": "Europe/Moscow",
+    "marketing_cost": 500
+  }
+]
