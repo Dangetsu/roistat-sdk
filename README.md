@@ -110,8 +110,8 @@ $call = $callScheme->create($call);
 * **/project/phone-call** - (Scheme\Calltracking\Call())->create(Entity\Calltracking\Call)
 ##### Рекламные каналы
 * **/project/analytics/source/list** - (Scheme\Analytics\Source())->items(Engine\Query)
-* **/project/analytics/source/cost/list** - В разработке
-* **/project/analytics/source/cost/add** - В разработке
+* **/project/analytics/source/cost/list** - (Scheme\Analytics\Source\Cost())->items()
+* **/project/analytics/source/cost/add** - (Scheme\Analytics\Source\Cost())->create(Entity\Analytics\Source\Cost)
 * **/project/analytics/source/cost/update** - В разработке
 * **/project/analytics/source/cost/delete** - В разработке
 ##### Статистика
