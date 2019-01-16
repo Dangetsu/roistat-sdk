@@ -6,8 +6,10 @@
 namespace Analytics\Entity\Analytics\Source;
 
 use Analytics\Entity;
+use Analytics\Scheme;
 
 /**
+ * @property Scheme\Analytics\Source\Cost $_scheme
  * @method string getSource()
  * @method string getName()
  * @method string getFromDate()
@@ -41,4 +43,17 @@ class Cost extends Entity\AbstractEntity {
     /** @var int */
     protected $marketing_cost;
 
+    /**
+     * @return bool
+     */
+    public function update() {
+        return $this->_scheme->update($this);
+    }
+
+    /**
+     * @return bool
+     */
+    public function delete() {
+        return $this->_scheme->delete($this->getId());
+    }
 }

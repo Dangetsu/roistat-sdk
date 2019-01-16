@@ -112,8 +112,8 @@ $call = $callScheme->create($call);
 * **/project/analytics/source/list** - (Scheme\Analytics\Source())->items(Engine\Query)
 * **/project/analytics/source/cost/list** - (Scheme\Analytics\Source\Cost())->items()
 * **/project/analytics/source/cost/add** - (Scheme\Analytics\Source\Cost())->create(Entity\Analytics\Source\Cost)
-* **/project/analytics/source/cost/update** - В разработке
-* **/project/analytics/source/cost/delete** - В разработке
+* **/project/analytics/source/cost/update** - (Scheme\Analytics\Source\Cost())->update(Entity\Analytics\Source\Cost)
+* **/project/analytics/source/cost/delete** - (Scheme\Analytics\Source\Cost())->delete(string $costId)
 ##### Статистика
 * В разработке
 ##### Доступ

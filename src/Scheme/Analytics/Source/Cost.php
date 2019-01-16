@@ -28,6 +28,24 @@ class Cost extends Scheme\AbstractScheme {
     }
 
     /**
+     * @param Source\Cost $cost
+     * @return bool
+     */
+    public function update(Source\Cost $cost) {
+        $response = $this->_base->api()->send('project/analytics/source/cost/update', $cost, Engine\Api::METHOD_POST);
+        return $response['status'] === 'success' ? true : false;
+    }
+
+    /**
+     * @param int $costId
+     * @return bool
+     */
+    public function delete($costId) {
+        $response = $this->_base->api()->send('project/analytics/source/cost/delete', ['id' => $costId], Engine\Api::METHOD_POST);
+        return $response['status'] === 'success' ? true : false;
+    }
+
+    /**
      * @return string
      */
     protected function _getResponseEntityClass() {

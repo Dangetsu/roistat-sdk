@@ -37,4 +37,19 @@ class CostTest extends \Test\AbstractTest {
         $isSave = (new Scheme\Analytics\Source\Cost($this->_roistat))->create($cost);
         $this->assertTrue($isSave);
     }
+
+    public function testUpdate() {
+        $this->_roistat->api()->addMockHandler($this->_createMockResponse(['status' => 'success']));
+        $cost = (new Source\Cost())
+            ->setId('123')
+            ->setMarketingCost(500);
+        $isSave = (new Scheme\Analytics\Source\Cost($this->_roistat))->update($cost);
+        $this->assertTrue($isSave);
+    }
+
+    public function testDelete() {
+        $this->_roistat->api()->addMockHandler($this->_createMockResponse(['status' => 'success']));
+        $isSave = (new Scheme\Analytics\Source\Cost($this->_roistat))->delete('123');
+        $this->assertTrue($isSave);
+    }
 }
