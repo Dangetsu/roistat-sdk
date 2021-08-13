@@ -75,7 +75,7 @@ abstract class AbstractEntity implements \JsonSerializable {
         $result = [];
         $properties = get_object_vars($this);
         foreach ($properties as $name => $value) {
-            if ($name{0} === '_' || $value === null) {
+            if ($name[0] === '_' || $value === null) {
                 continue;
             }
             /** @var AbstractEntity $value */
